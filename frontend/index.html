@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>客户经理 AI 作战台</title>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/lucide.min.js"></script>
   <script src="assets/jszip.min.js"></script>
   <link rel="stylesheet" href="assets/leaflet/leaflet.css" />
   <script src="assets/leaflet/leaflet.js"></script>
@@ -2077,17 +2077,20 @@
 
 
     .brand-emoji { font-size: 24px; line-height: 1; display: inline-block; }
+
+    .brand-icon { width: 28px; height: 28px; stroke-width: 2; color: var(--primary); }
+    .hero-logo .brand-icon { width: 34px; height: 34px; }
   </style>
 </head>
 <body class="locked">
   <div class="always-logo" aria-label="公司品牌标识">
-    <span class="brand-emoji">🐖</span>
+    <i data-lucide="store" class="brand-icon"></i>
     <span>AI 作战台</span>
   </div>
   <section class="login-screen" id="loginScreen" aria-label="登录">
     <div class="login-hero">
       <div class="login-brand">
-        <span class="brand-emoji">🐖</span>
+        <i data-lucide="store" class="brand-icon"></i>
         <span>生鲜客户经理 AI 作战台</span>
       </div>
       <div class="login-copy">
@@ -2130,7 +2133,7 @@
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark"><span class="brand-emoji">🐖</span></div>
+        <div class="brand-mark"><i data-lucide="store" class="brand-icon"></i></div>
         <div>
           <h1>客户经理 AI 作战台</h1>
           <p>拜访 · 开发 · 机会</p>
@@ -2161,7 +2164,7 @@
     <main>
       <header class="topbar">
         <div class="topbar-brand">
-          <div class="topbar-logo"><span class="brand-emoji">🐖</span></div>
+          <div class="topbar-logo"><i data-lucide="store" class="brand-icon"></i></div>
           <div class="title-block">
             <h2 id="pageTitle">首页</h2>
             <p id="pageSubtitle">今日工作概览、优先动作和核心功能入口。</p>
@@ -2179,10 +2182,10 @@
 
       <section class="module active" id="home">
         <div class="home-hero">
-          <div class="hero-logo"><span class="brand-emoji">🐖</span></div>
+          <div class="hero-logo"><i data-lucide="store" class="brand-icon"></i></div>
           <div class="home-kicker"><i data-lucide="radar"></i>今日客户开发驾驶舱</div>
           <h3>先判断去哪找客户，再准备什么话术，最后把成功经验沉淀下来。</h3>
-          <p>首页把拜访助手、客户画像匹配、滞销产品推荐、河南地图热力和任务二/三/四数据看板合并成一个工作入口。</p>
+          <p>首页把拜访助手、客户画像匹配、滞销产品推荐、河南地图热力和数据看板合并成一个工作入口。</p>
         </div>
         <div class="home-layout">
           <div class="panel">
@@ -2213,7 +2216,7 @@
                   <span class="tag cyan">长期闭环</span>
                 </div>
                 <div class="action-card" tabindex="0" data-jump="analysis">
-                  <b><i data-lucide="chart-column-big"></i>任务二/三/四看板</b>
+                  <b><i data-lucide="chart-column-big"></i>数据看板</b>
                   <span>量化订单、经营和竞品监控，输出客户经理行动。</span>
                   <span class="tag blue">看数据</span>
                 </div>
@@ -2248,7 +2251,7 @@
               <div class="image-card"><img src="assets/scene-healthy-pasture.jpg" alt="健康牧场" /><span>健康供应：以稳定、透明、可追溯增强客户信任</span></div>
               <div class="image-card"><img src="assets/scene-care-scene.jpg" alt="猪场照护" /><span>客户服务：品质、到货、售后和投诉闭环管理</span></div>
               <div class="image-card"><img src="assets/scene-piglets-straw.jpg" alt="猪群健康场景" /><span>鲜品基础：白条、分割品、气调产品销售场景</span></div>
-              <div class="image-card"><img src="assets/scene-field-data.jpg" alt="农业数据监测" /><span>数据看板：任务二/三/四量化展示和预警动作</span></div>
+              <div class="image-card"><img src="assets/scene-field-data.jpg" alt="农业数据监测" /><span>数据看板：风险、待办与竞品监控</span></div>
             </div>
           </div>
         </div>
@@ -2391,13 +2394,13 @@
                 <div class="task-card"><b>任务四：竞品监控</b><span>从拜访文本提取竞品价、价差、区域、事件和预警动作。</span></div>
               </div>
               <div class="button-row">
-                <button class="primary" id="generateAnalysis"><i data-lucide="chart-spline"></i>生成任务二/三/四看板</button>
+                <button class="primary" id="generateAnalysis"><i data-lucide="chart-spline"></i>生成数据看板</button>
               </div>
             </div>
           </div>
           <div class="panel">
             <div class="panel-head">
-              <h3 class="panel-title"><i data-lucide="chart-column-big"></i>任务二/三/四数据看板</h3>
+              <h3 class="panel-title"><i data-lucide="chart-column-big"></i>数据看板</h3>
               <span class="tag blue">订单+经营+竞品</span>
             </div>
             <div class="panel-body output" id="analysisOutput"></div>
