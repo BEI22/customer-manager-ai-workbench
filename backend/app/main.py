@@ -30,7 +30,7 @@ app.add_middleware(
 
 class RunRequest(BaseModel):
     text: str
-    muyuan_items: list[dict] | None = None
+    company_items: list[dict] | None = None
 
 
 class PushRequest(BaseModel):
@@ -65,7 +65,7 @@ def health() -> dict:
 @app.post("/api/agent/run")
 def agent_run(payload: RunRequest):
     def event_stream():
-        for event in agent.run_agent(payload.text, muyuan_items=payload.muyuan_items):
+        for event in agent.run_agent(payload.text, company_items=payload.company_items):
             yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
         yield "event: done\ndata: {}\n\n"
 

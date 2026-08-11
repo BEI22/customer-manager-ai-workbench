@@ -163,25 +163,25 @@ def parse_competitor_lines(text: str) -> list[dict]:
     return rows
 
 
-def compare_prices(muyuan_items: list[dict], competitor_text: str, muyuan_days: int = 0, comp_days_default: int = 0, capital_rate: float = 0.06) -> dict:
+def compare_prices(company_items: list[dict], competitor_text: str, company_days: int = 0, comp_days_default: int = 0, capital_rate: float = 0.06) -> dict:
     rows = []
     for r in parse_competitor_lines(competitor_text):
         quote = None
-        for m in muyuan_items:
+        for m in company_items:
             if m.get("product") and r["product"] and (m["product"] in r["product"] or r["product"] in m["product"]):
                 quote = m
                 break
         gap = round(quote["price"] - r["price"], 2) if quote else None
         comp_days = r["terms"] if r["terms"] is not None else comp_days_default
-        muyuan_cap = quote["price"] * muyuan_days / 365 * capital_rate if quote else 0
+        company_cap = quote["price"] * company_days / 365 * capital_rate if quote else 0
         comp_cap = r["price"] * comp_days / 365 * capital_rate
-        gap_adj = round(gap - (comp_cap - muyuan_cap), 2) if gap is not None else None
+        gap_adj = round(gap - (comp_cap - company_cap), 2) if gap is not None else None
         rows.append({
             "company": r["company"], "product": r["product"],
-            "muyuanPrice": quote["price"] if quote else None,
+            "companyPrice": quote["price"] if quote else None,
             "competitorPrice": r["price"], "surfaceGap": gap, "gapAdj": gap_adj,
-            "muyuanDays": muyuan_days, "compDays": comp_days,
-            "condition": "资料提取价，规格、账期和配送条件需复核" if quote else "已识别竞品价，需补录该品项牧原报价",
+            "companyDays": company_days, "compDays": comp_days,
+            "condition": "资料提取价，规格、账期和配送条件需复核" if quote else "已识别竞品价，需补录该品项公司报价",
         })
     return {"rows": rows, "count": len(rows)}
 

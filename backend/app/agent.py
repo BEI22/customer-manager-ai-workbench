@@ -18,7 +18,7 @@ from langgraph.graph import END, START, StateGraph
 from . import llm as llm_mod
 from . import tools
 
-AGENT_SYSTEM = """你是“牧原客户经理AI助手”，帮助生鲜客户经理完成客户拜访纪要、账期风控、竞品比价和销售话术的智能体。
+AGENT_SYSTEM = """你是“客户经理AI助手”，帮助生鲜客户经理完成客户拜访纪要、账期风控、竞品比价和销售话术的智能体。
 
 工作方式：
 1. 你会先调用工具获取事实与依据（账期风险、竞品比价、相似成功案例）。
@@ -26,7 +26,7 @@ AGENT_SYSTEM = """你是“牧原客户经理AI助手”，帮助生鲜客户经
 
 工具：
 - assess_credit_risk_tool：评估客户账期拖欠风险等级与管控动作。
-- compare_prices_tool：解析竞品报价并与牧原报价比价，计算含账期资金成本的综合价差。
+- compare_prices_tool：解析竞品报价并与公司报价比价，计算含账期资金成本的综合价差。
 - search_success_cases_tool：检索与当前客户最相似的已开发成功客户案例，用于复用开发思路和话术。
 - push_todo_message_tool：把高优先级待办推送到钉钉/飞书群机器人（按需）。
 
@@ -56,12 +56,12 @@ def assess_credit_risk_tool(text: str) -> str:
 
 
 @tool
-def compare_prices_tool(competitor_text: str, muyuan_items: list | None = None, muyuan_days: int = 0) -> str:
-    """解析竞品报价并与牧原报价比价，计算含账期资金成本的综合价差。"""
+def compare_prices_tool(competitor_text: str, company_items: list | None = None, company_days: int = 0) -> str:
+    """解析竞品报价并与公司报价比价，计算含账期资金成本的综合价差。"""
     return json.dumps(tools.compare_prices(
-        muyuan_items=muyuan_items or [],
+        company_items=company_items or [],
         competitor_text=competitor_text,
-        muyuan_days=int(muyuan_days or 0),
+        company_days=int(company_days or 0),
     ), ensure_ascii=False)
 
 
@@ -133,7 +133,7 @@ def default_tool_calls(text: str, facts: dict) -> list[dict]:
     for name, args in [
         ("assess_credit_risk", {"text": text}),
         ("search_success_cases", {"query": f"{facts['profile']['type']} {facts['product']} {facts['profile']['concern']} {text}", "top_n": 3}),
-        ("compare_prices", {"competitor_text": text, "muyuan_items": [], "muyuan_days": facts["termDays"] or 0}),
+        ("compare_prices", {"competitor_text": text, "company_items": [], "company_days": facts["termDays"] or 0}),
     ]:
         calls.append({"id": f"call_mock_{idx}", "type": "function", "function": {"name": name, "arguments": json.dumps(args, ensure_ascii=False)}})
         idx += 1
@@ -145,11 +145,11 @@ def dispatch_tool(name: str, args: dict, text: str, context: dict | None = None)
     if name == "assess_credit_risk":
         return tools.assess_credit_risk(args.get("text") or text)
     if name == "compare_prices":
-        muyuan_items = args.get("muyuan_items") or ctx.get("muyuan_items") or []
+        company_items = args.get("company_items") or ctx.get("company_items") or []
         return tools.compare_prices(
-            muyuan_items=muyuan_items,
+            company_items=company_items,
             competitor_text=args.get("competitor_text") or text,
-            muyuan_days=int(args.get("muyuan_days") or 0),
+            company_days=int(args.get("company_days") or 0),
         )
     if name == "search_success_cases":
         return tools.search_success_cases(args.get("query") or text, top_n=int(args.get("top_n") or 3))
@@ -232,7 +232,7 @@ def mock_report(text: str, facts: dict, results: dict) -> dict[str, Any]:
 # ---------- LangGraph ----------
 class AgentState(TypedDict):
     text: str
-    muyuan_items: list
+    company_items: list
     facts: dict
     messages: Annotated[list, operator.add]
     tool_results: dict
@@ -260,8 +260,8 @@ def execute_node(state: AgentState) -> dict:
     for tc in tool_calls:
         name = tc["name"]
         args = tc.get("args") or {}
-        if name == "compare_prices_tool" and not args.get("muyuan_items") and state.get("muyuan_items"):
-            args = {**args, "muyuan_items": state["muyuan_items"]}
+        if name == "compare_prices_tool" and not args.get("company_items") and state.get("company_items"):
+            args = {**args, "company_items": state["company_items"]}
         lc_tool = next((t for t in AGENT_TOOLS if t.name == name), None)
         try:
             result_str = lc_tool.invoke(args) if lc_tool else "{}"
@@ -325,7 +325,7 @@ GRAPH = build_graph()
 
 
 # ---------- Agent 主入口 ----------
-def _rule_mode(text: str, muyuan_items: list | None, push: dict | None) -> Iterator[dict]:
+def _rule_mode(text: str, company_items: list | None, push: dict | None) -> Iterator[dict]:
     facts = extract_facts(text)
     yield {"type": "thinking", "step": f"解析拜访资料：客户 {facts['customer']}｜目的 {facts['purpose']}｜产品 {facts['product']}｜账期 {facts['payMethod']}"}
     yield {"type": "thinking", "step": "未配置 DEEPSEEK_API_KEY，使用规则模式执行工具（在 backend/.env 配置 Key 后自动切换真实模型）"}
@@ -337,13 +337,13 @@ def _rule_mode(text: str, muyuan_items: list | None, push: dict | None) -> Itera
         except Exception:  # noqa: BLE001
             args = {}
         yield {"type": "tool_start", "name": name, "args": args}
-        result = dispatch_tool(name, args, text, {"muyuan_items": muyuan_items, "push": push})
+        result = dispatch_tool(name, args, text, {"company_items": company_items, "push": push})
         results[name] = result
         yield {"type": "tool_end", "name": name, "summary": tool_summary(name, result), "result": result}
     yield {"type": "result", "data": mock_report(text, facts, results)}
 
 
-def _fallback(text: str, muyuan_items: list | None, push: dict | None, reason: str) -> Iterator[dict]:
+def _fallback(text: str, company_items: list | None, push: dict | None, reason: str) -> Iterator[dict]:
     facts = extract_facts(text)
     yield {"type": "thinking", "step": reason}
     results: dict[str, Any] = {}
@@ -353,24 +353,24 @@ def _fallback(text: str, muyuan_items: list | None, push: dict | None, reason: s
             args = json.loads(call["function"]["arguments"] or "{}")
         except Exception:  # noqa: BLE001
             args = {}
-        results[name] = dispatch_tool(name, args, text, {"muyuan_items": muyuan_items, "push": push})
+        results[name] = dispatch_tool(name, args, text, {"company_items": company_items, "push": push})
     yield {"type": "result", "data": mock_report(text, facts, results)}
 
 
-def run_agent(text: str, muyuan_items: list[dict] | None = None, push: dict | None = None) -> Iterator[dict[str, Any]]:
+def run_agent(text: str, company_items: list[dict] | None = None, push: dict | None = None) -> Iterator[dict[str, Any]]:
     text = (text or "").strip()
     if not text:
         yield {"type": "error", "message": "请先输入拜访资料"}
         return
 
     if not llm_mod.available():
-        yield from _rule_mode(text, muyuan_items, push)
+        yield from _rule_mode(text, company_items, push)
         return
 
     try:
         inputs: dict[str, Any] = {
             "text": text,
-            "muyuan_items": muyuan_items or [],
+            "company_items": company_items or [],
             "facts": {},
             "messages": [
                 SystemMessage(content=AGENT_SYSTEM),
@@ -407,6 +407,6 @@ def run_agent(text: str, muyuan_items: list[dict] | None = None, push: dict | No
                         yield {"type": "result", "data": report}
                         emitted_result = True
         if not emitted_result:
-            yield from _fallback(text, muyuan_items, push, "LangGraph 未产出结果，使用规则模式兜底")
+            yield from _fallback(text, company_items, push, "LangGraph 未产出结果，使用规则模式兜底")
     except Exception as exc:  # noqa: BLE001
-        yield from _fallback(text, muyuan_items, push, f"LangGraph 执行异常，使用规则模式兜底（{exc}）")
+        yield from _fallback(text, company_items, push, f"LangGraph 执行异常，使用规则模式兜底（{exc}）")

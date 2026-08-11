@@ -48,7 +48,7 @@
       margin: 0;
       background:
         linear-gradient(180deg, rgba(232, 249, 235, .7) 0%, rgba(249, 253, 245, .88) 42%, rgba(226, 244, 231, .9) 100%),
-        url("assets/muyuan-healthy-pasture.jpg") center top / cover fixed no-repeat;
+        url("assets/scene-healthy-pasture.jpg") center top / cover fixed no-repeat;
       color: var(--text);
       min-width: 320px;
       min-height: 100vh;
@@ -82,7 +82,7 @@
       grid-template-columns: minmax(420px, 0.95fr) minmax(360px, 0.55fr);
       background:
         linear-gradient(90deg, rgba(8, 45, 28, .78) 0%, rgba(38, 121, 71, .42) 48%, rgba(232, 247, 255, .18) 100%),
-        url("assets/muyuan-smart-farm.jpg") center / cover no-repeat;
+        url("assets/scene-smart-farm.jpg") center / cover no-repeat;
       color: #fff;
     }
 
@@ -226,7 +226,7 @@
       min-height: 154px;
       background:
         linear-gradient(180deg, rgba(16, 24, 40, .12), rgba(16, 24, 40, .32)),
-        url("assets/muyuan-campus-logo.jpg") center / cover no-repeat;
+        url("assets/scene-healthy-pasture.jpg") center / cover no-repeat;
     }
 
     .login-card-body {
@@ -718,7 +718,7 @@
       position: relative;
       background:
         linear-gradient(90deg, rgba(8, 45, 28, .78) 0%, rgba(50, 136, 68, .36) 52%, rgba(255, 255, 255, .1) 100%),
-        url("assets/muyuan-healthy-pasture.jpg") center / cover no-repeat;
+        url("assets/scene-healthy-pasture.jpg") center / cover no-repeat;
       color: #fff;
       display: grid;
       align-content: end;
@@ -1921,11 +1921,11 @@
     .real-map .leaflet-container {
       font-family: inherit;
     }
-    .muyuan-marker-icon {
+    .company-marker-icon {
       background: transparent;
       border: 0;
     }
-    .muyuan-pin {
+    .company-pin {
       position: relative;
       width: 16px;
       height: 16px;
@@ -1935,7 +1935,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
       transform: translate(-50%, -50%);
     }
-    .muyuan-pin span {
+    .company-pin span {
       position: absolute;
       left: 50%;
       top: calc(100% + 4px);
@@ -1950,12 +1950,12 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, .22);
       line-height: 1.4;
     }
-    .muyuan-pop b {
+    .company-pop b {
       display: block;
       margin-bottom: 4px;
       font-size: 13px;
     }
-    .muyuan-pop div {
+    .company-pop div {
       margin: 2px 0;
       font-size: 12px;
     }
@@ -2075,18 +2075,20 @@
     .theme-palette button:hover { background: var(--primary-2); }
     .theme-palette button.active { background: var(--primary-2); font-weight: 700; }
 
+
+    .brand-emoji { font-size: 24px; line-height: 1; display: inline-block; }
   </style>
 </head>
 <body class="locked">
-  <div class="always-logo" aria-label="牧原品牌标识">
-    <img src="assets/muyuan-logo.png" alt="牧原" />
+  <div class="always-logo" aria-label="公司品牌标识">
+    <span class="brand-emoji">🐖</span>
     <span>AI 作战台</span>
   </div>
   <section class="login-screen" id="loginScreen" aria-label="登录">
     <div class="login-hero">
       <div class="login-brand">
-        <img src="assets/muyuan-logo.png" alt="牧原" />
-        <span>牧原生鲜客户经理 AI 作战台</span>
+        <span class="brand-emoji">🐖</span>
+        <span>生鲜客户经理 AI 作战台</span>
       </div>
       <div class="login-copy">
         <h1>把拜访、比价、找客户和机会推荐放到一个工作入口。</h1>
@@ -2128,7 +2130,7 @@
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark"><img src="assets/muyuan-logo.png" alt="牧原" /></div>
+        <div class="brand-mark"><span class="brand-emoji">🐖</span></div>
         <div>
           <h1>客户经理 AI 作战台</h1>
           <p>拜访 · 开发 · 机会</p>
@@ -2159,7 +2161,7 @@
     <main>
       <header class="topbar">
         <div class="topbar-brand">
-          <div class="topbar-logo"><img src="assets/muyuan-logo.png" alt="牧原" /></div>
+          <div class="topbar-logo"><span class="brand-emoji">🐖</span></div>
           <div class="title-block">
             <h2 id="pageTitle">首页</h2>
             <p id="pageSubtitle">今日工作概览、优先动作和核心功能入口。</p>
@@ -2177,7 +2179,7 @@
 
       <section class="module active" id="home">
         <div class="home-hero">
-          <div class="hero-logo"><img src="assets/muyuan-logo.png" alt="牧原" /></div>
+          <div class="hero-logo"><span class="brand-emoji">🐖</span></div>
           <div class="home-kicker"><i data-lucide="radar"></i>今日客户开发驾驶舱</div>
           <h3>先判断去哪找客户，再准备什么话术，最后把成功经验沉淀下来。</h3>
           <p>首页把拜访助手、客户画像匹配、滞销产品推荐、河南地图热力和任务二/三/四数据看板合并成一个工作入口。</p>
@@ -2192,7 +2194,7 @@
               <div class="action-grid">
                 <div class="action-card" tabindex="0" data-jump="summary">
                   <b><i data-lucide="scale"></i>价格与竞品比价</b>
-                  <span>录入牧原报价和竞品报价，生成价格不好比对时的话术。</span>
+                  <span>录入公司报价和竞品报价，生成价格不好比对时的话术。</span>
                   <span class="tag red">先处理</span>
                 </div>
                 <div class="action-card" tabindex="0" data-jump="match">
@@ -2236,17 +2238,17 @@
         </div>
         <div class="panel">
           <div class="panel-head">
-            <h3 class="panel-title"><i data-lucide="images"></i>牧原业务场景</h3>
+            <h3 class="panel-title"><i data-lucide="images"></i>生鲜业务场景</h3>
             <span class="tag cyan">素材已接入</span>
           </div>
           <div class="panel-body">
             <div class="image-grid">
-              <div class="image-card feature"><img src="assets/muyuan-smart-farm.jpg" alt="智慧农业生产场景" /><span>智慧农业：把客户经理动作和经营数据连接起来</span></div>
-              <div class="image-card"><img src="assets/muyuan-visit-analysis.jpg" alt="猪场拜访分析场景" /><span>拜访助手：录音、文稿、比价和待办实时联动</span></div>
-              <div class="image-card"><img src="assets/muyuan-healthy-pasture.jpg" alt="健康牧场" /><span>健康供应：以稳定、透明、可追溯增强客户信任</span></div>
-              <div class="image-card"><img src="assets/muyuan-care-scene.jpg" alt="猪场照护" /><span>客户服务：品质、到货、售后和投诉闭环管理</span></div>
-              <div class="image-card"><img src="assets/muyuan-piglets-straw.jpg" alt="猪群健康场景" /><span>鲜品基础：白条、分割品、气调产品销售场景</span></div>
-              <div class="image-card"><img src="assets/muyuan-field-data.jpg" alt="农业数据监测" /><span>数据看板：任务二/三/四量化展示和预警动作</span></div>
+              <div class="image-card feature"><img src="assets/scene-smart-farm.jpg" alt="智慧农业生产场景" /><span>智慧农业：把客户经理动作和经营数据连接起来</span></div>
+              <div class="image-card"><img src="assets/scene-visit-analysis.jpg" alt="猪场拜访分析场景" /><span>拜访助手：录音、文稿、比价和待办实时联动</span></div>
+              <div class="image-card"><img src="assets/scene-healthy-pasture.jpg" alt="健康牧场" /><span>健康供应：以稳定、透明、可追溯增强客户信任</span></div>
+              <div class="image-card"><img src="assets/scene-care-scene.jpg" alt="猪场照护" /><span>客户服务：品质、到货、售后和投诉闭环管理</span></div>
+              <div class="image-card"><img src="assets/scene-piglets-straw.jpg" alt="猪群健康场景" /><span>鲜品基础：白条、分割品、气调产品销售场景</span></div>
+              <div class="image-card"><img src="assets/scene-field-data.jpg" alt="农业数据监测" /><span>数据看板：任务二/三/四量化展示和预警动作</span></div>
             </div>
           </div>
         </div>
@@ -2306,15 +2308,15 @@
                     <option>气调产品</option>
                   </select>
                 </label>
-                <label>牧原报价<input id="quotePriceInput" placeholder="例如：18.80 元/kg" /><input id="muyuanPrice" type="hidden" value="待确认" /></label>
+                <label>公司报价<input id="quotePriceInput" placeholder="例如：18.80 元/kg" /><input id="companyPrice" type="hidden" value="待确认" /></label>
                 <div class="full quote-manager">
-                  <b>牧原多品项报价清单</b>
-                  <span style="color:var(--muted);font-size:12px;line-height:1.6">直接输入品项和牧原报价，确认后右侧立即按同品项匹配资料里的同行报价并计算价差。</span>
+                  <b>公司多品项报价清单</b>
+                  <span style="color:var(--muted);font-size:12px;line-height:1.6">直接输入品项和公司报价，确认后右侧立即按同品项匹配资料里的同行报价并计算价差。</span>
                   <div class="quote-actions">
-                    <button class="secondary" id="addMuyuanQuote" type="button"><i data-lucide="list-plus"></i>确认添加到比价表</button>
-                    <button class="secondary" id="clearMuyuanQuotes" type="button"><i data-lucide="list-x"></i>清空报价清单</button>
+                    <button class="secondary" id="addCompanyQuote" type="button"><i data-lucide="list-plus"></i>确认添加到比价表</button>
+                    <button class="secondary" id="clearCompanyQuotes" type="button"><i data-lucide="list-x"></i>清空报价清单</button>
                   </div>
-                  <div class="quote-list" id="muyuanQuoteList"></div>
+                  <div class="quote-list" id="companyQuoteList"></div>
                 </div>
                 <label class="full">竞品报价（自动识别，可手动修正）
                   <textarea class="compact-textarea" id="competitorPrices" placeholder="可按行输入，例如：
@@ -2334,7 +2336,7 @@
                       <option>月结</option>
                       <option>滚动结</option>
                     </select>
-                    <input id="termDays" placeholder="牧原账期天数，现款填 0" />
+                    <input id="termDays" placeholder="公司账期天数，现款填 0" />
                     <input id="competitorTermDays" placeholder="竞品账期天数(默认)" />
                     <input id="creditLimit" placeholder="授信额度，如 10万" />
                     <input id="capitalRate" placeholder="年化资金成本率%，默认 6" value="6" />
@@ -2687,7 +2689,7 @@
     <button class="theme-fab" id="themeFab" title="切换主题">🎨</button>
     <div class="theme-palette" id="themePalette">
       <b>界面主题（几版样式）</b>
-      <button data-theme-name="default">🌿 牧原绿</button>
+      <button data-theme-name="default">🌿 草原绿</button>
       <button data-theme-name="dark">🌙 深色驾驶舱</button>
       <button data-theme-name="blue">💼 商务蓝</button>
       <button data-theme-name="gold">🌅 暖金晨曦</button>
@@ -2755,7 +2757,7 @@
     ];
 
     const $ = (id) => document.getElementById(id);
-    const VISIT_HISTORY_KEY = "muyuan_visit_history_records";
+    const VISIT_HISTORY_KEY = "visit_history_records";
 
     function icon(name) {
       return `<i data-lucide="${name}"></i>`;
@@ -2848,13 +2850,13 @@
           includePrice: true,
           focus: "判断客户是否具备试单窗口，补齐客户画像、采购规模、主销品类和当前供应商条件。",
           action: "先确认客户经营类型、日采购量、主销规格、配送半径和决策人，再提出低风险小批量试单。",
-          talk: "今天我先不急着让您换供应商，主要想把您现在的主销品类、日采购量、供应稳定性和最担心的问题了解清楚。如果牧原能在规格稳定、到货响应或售后上补上缺口，我们可以先拿一个主销规格做小量试单，用实际走货结果再谈后续合作。"
+          talk: "今天我先不急着让您换供应商，主要想把您现在的主销品类、日采购量、供应稳定性和最担心的问题了解清楚。如果我们能在规格稳定、到货响应或售后上补上缺口，我们可以先拿一个主销规格做小量试单，用实际走货结果再谈后续合作。"
         },
         "报价沟通": {
           icon: "badge-dollar-sign",
           includePrice: true,
           focus: "围绕报价、竞品、规格、配送、账期和损耗做同口径比价。",
-          action: "按品项拆分牧原报价和同行报价，确认规格、鲜冻状态、配送、账期和售后条件后再判断价差。",
+          action: "按品项拆分公司报价和同行报价，确认规格、鲜冻状态、配送、账期和售后条件后再判断价差。",
           talk: "价格我先记录下来，但这个价不能只看单价。我们把同一品项、同一规格、鲜冻状态、配送时效、账期和售后责任对齐后再比，才能看出真实成本。"
         },
         "质量投诉处理": {
@@ -3181,7 +3183,7 @@
       return price * days / 365 * r;
     }
 
-    function muyuanTermDays() {
+    function companyTermDays() {
       const raw = ($("termDays") && $("termDays").value) || "";
       const days = parseInt(raw, 10);
       return Number.isFinite(days) && days >= 0 ? days : 0;
@@ -3200,7 +3202,7 @@
     }
 
     // ===== 待办推送接口（钉钉/飞书，PRD 预留） =====
-    function pushConfigKey() { return "muyuan_todo_push_config"; }
+    function pushConfigKey() { return "todo_push_config"; }
     function getPushConfig() {
       try { return JSON.parse(localStorage.getItem(pushConfigKey()) || "null") || { channel: "不启用", webhook: "", scope: "P0+P1" }; }
       catch { return { channel: "不启用", webhook: "", scope: "P0+P1" }; }
@@ -3253,7 +3255,7 @@
         return { ok: false, reason: "发送失败（请检查网络、Webhook 地址或后端服务）" };
       }
     }
-    function lastPushedKey() { return "muyuan_todo_last_pushed"; }
+    function lastPushedKey() { return "todo_last_pushed"; }
     function getLastPushed() {
       try { return JSON.parse(localStorage.getItem(lastPushedKey()) || "[]"); } catch { return []; }
     }
@@ -3291,7 +3293,7 @@
     }
 
     // ===== 成功记忆库 + 相似案例向量检索（PRD 7.7 / 7.8） =====
-    const SUCCESS_CASES_KEY = "muyuan_success_cases";
+    const SUCCESS_CASES_KEY = "success_cases";
     function loadSuccessCases() {
       try { return JSON.parse(localStorage.getItem(SUCCESS_CASES_KEY) || "[]"); } catch { return []; }
     }
@@ -3435,7 +3437,7 @@
       return block("成功记忆库（已沉淀案例）", "database", `<p>共 ${cases.length} 条。来源：拜访助手自动沉淀 + 手动录入。正式版将把每条案例向量化后存入向量数据库，用余弦相似度检索。</p>` + (cases.length ? `<div class="table-wrap"><table><thead><tr><th>客户</th><th>画像与品类</th><th>突破打法</th><th>结果</th><th>来源</th><th>操作</th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p>暂无沉淀案例。拜访老客户时出现试单、复购、加量等信号会自动沉淀，也可手动录入。</p>`));
     }
     // ===== Agent 后端合体（AI 引擎） =====
-    const AGENT_API_KEY = "muyuan_agent_api_base";
+    const AGENT_API_KEY = "agent_api_base";
     function agentApiBase() {
       return (localStorage.getItem(AGENT_API_KEY) || "http://127.0.0.1:8000").replace(/\/+$/, "");
     }
@@ -3479,7 +3481,7 @@
     function agentBenchmarkRows(benchmark) {
       const rows = (benchmark && benchmark.rows) || [];
       if (!rows.length) return `<tr><td colspan="7">未识别到明确竞品报价。</td></tr>`;
-      return rows.map(item => `<tr><td>${safeText(item.company || "")}</td><td>${safeText(item.product || "待确认")}</td><td>${item.muyuanPrice == null ? "待补录" : item.muyuanPrice.toFixed(2) + " 元/kg"}</td><td>${Number.isFinite(item.competitorPrice) ? item.competitorPrice.toFixed(2) + " 元/kg" : "待确认"}</td><td>${item.surfaceGap == null ? "-" : `${item.surfaceGap > 0 ? "+" : ""}${item.surfaceGap.toFixed(2)} 元/kg`}</td><td>牧原${item.muyuanDays ? item.muyuanDays + "天" : "现款"}｜竞品${item.compDays ? item.compDays + "天" : "现款"}</td><td>${item.gapAdj == null ? "-" : `${item.gapAdj > 0 ? "+" : ""}${item.gapAdj.toFixed(2)} 元/kg`}</td></tr>`).join("");
+      return rows.map(item => `<tr><td>${safeText(item.company || "")}</td><td>${safeText(item.product || "待确认")}</td><td>${item.companyPrice == null ? "待补录" : item.companyPrice.toFixed(2) + " 元/kg"}</td><td>${Number.isFinite(item.competitorPrice) ? item.competitorPrice.toFixed(2) + " 元/kg" : "待确认"}</td><td>${item.surfaceGap == null ? "-" : `${item.surfaceGap > 0 ? "+" : ""}${item.surfaceGap.toFixed(2)} 元/kg`}</td><td>公司${item.companyDays ? item.companyDays + "天" : "现款"}｜竞品${item.compDays ? item.compDays + "天" : "现款"}</td><td>${item.gapAdj == null ? "-" : `${item.gapAdj > 0 ? "+" : ""}${item.gapAdj.toFixed(2)} 元/kg`}</td></tr>`).join("");
     }
     function renderAgentReport(d) {
       const cr = d.creditRisk || {};
@@ -3501,7 +3503,7 @@
           <div class="mini-card"><span>${icon("calendar-clock")}账期天数</span><strong>${safeText(cr.termDays != null ? cr.termDays : "待确认")}</strong></div>
           <div class="mini-card"><span>${icon("shield-alert")}拖欠风险</span><strong>${creditRiskTag(cr)}</strong></div>
         </div><div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>触发因子</th><th>建议动作</th></tr></thead><tbody>${(cr.factors || []).length ? cr.factors.map(f => `<tr><td>${safeText(f)}</td><td>${crActions.map(safeText).join("；") || "待确认"}</td></tr>`).join("") : `<tr><td colspan="2">未检测到明显拖欠信号。</td></tr>`}</tbody></table></div>`) +
-        block("竞品比价（含账期资金成本）", "scale", `<div class="table-wrap"><table><thead><tr><th>竞品</th><th>品项</th><th>牧原报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${agentBenchmarkRows(bm)}</tbody></table></div>`) +
+        block("竞品比价（含账期资金成本）", "scale", `<div class="table-wrap"><table><thead><tr><th>竞品</th><th>品项</th><th>公司报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${agentBenchmarkRows(bm)}</tbody></table></div>`) +
         block("相似成功客户参考（Agent 检索）", "scan-search", (sc.hits || []).length
           ? `<div class="table-wrap"><table><thead><tr><th>相似老客户</th><th>相似度</th><th>画像与品类</th><th>有效打法</th><th>结果</th><th>相似点</th></tr></thead><tbody>${sc.hits.map(h => `<tr><td>${safeText(h.customerName)}</td><td>${h.score}<div class="score"><i style="--w:${h.score}%"></i></div></td><td>${safeText(h.type || "")}｜${safeText(h.product || "")}｜${safeText(h.concern || "")}</td><td>${safeText(h.breakthrough || "")}</td><td>${safeText(h.result || "")}</td><td>${safeText((h.similar || []).join("、") || "-")}</td></tr>`).join("")}</tbody></table></div>`
           : `<p>未检索到相似成功案例。</p>`) +
@@ -3518,14 +3520,14 @@
       if (!text) { showToast("请先输入或导入拜访资料"); return false; }
       const mode = await checkAgent();
       if (!mode) { showToast("Agent 后端未连接，使用规则模式"); generateSummary(); return false; }
-      const muyuanItems = getMuyuanQuoteItems().map(item => ({ product: item.product, price: item.price }));
+      const companyItems = getCompanyQuoteItems().map(item => ({ product: item.product, price: item.price }));
       $("summaryOutput").innerHTML = block("Agent 思考过程", "bot", `<div class="agent-log" id="agentLog">启动 Agent…</div>`);
       renderIcons();
       try {
         const resp = await fetch(agentApiBase() + "/api/agent/run", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text, muyuan_items: muyuanItems })
+          body: JSON.stringify({ text, company_items: companyItems })
         });
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         const reader = resp.body.getReader();
@@ -3640,10 +3642,10 @@
       return inferProducts(text, fileName)[0] || "待确认";
     }
 
-    function inferMuyuanPrice(text) {
+    function inferCompanyPrice(text) {
       const specific = firstMatch(text, [
-        /(?:牧原|目标|我方|报价|价格政策)[^\d\n\r]{0,12}(\d+(?:\.\d+)?)\s*(?:元\s*\/?\s*kg|元\/公斤|元每公斤|元)/i,
-        /(\d+(?:\.\d+)?)\s*(?:元\s*\/?\s*kg|元\/公斤|元每公斤|元)[^\n\r]{0,12}(?:牧原|目标|我方|报价|价格政策)/i
+        /(?:公司|目标|我方|报价|价格政策)[^\d\n\r]{0,12}(\d+(?:\.\d+)?)\s*(?:元\s*\/?\s*kg|元\/公斤|元每公斤|元)/i,
+        /(\d+(?:\.\d+)?)\s*(?:元\s*\/?\s*kg|元\/公斤|元每公斤|元)[^\n\r]{0,12}(?:公司|目标|我方|报价|价格政策)/i
       ]);
       if (specific) return `${Number(specific).toFixed(2)} 元/kg`;
       return "待确认";
@@ -3806,8 +3808,8 @@
           if (!hasPriceSignal && !hasProductPriceShape) return;
           const explicitCompany = findClosestCompany(line, candidate.index) || findCompanyInText(context) || findCompanyInText(line);
           const hasCompetitorSignal = /竞品|其他供应商|对方|别人家|人家|外面|市场|行情|本地|温氏|新希望|正大|双汇|雨润|金锣|供应商/.test(context + line);
-          const isMuyuanOnly = /牧原|我方|我们|目标价|目标报价|公司报价/.test(context + line) && !explicitCompany && !hasCompetitorSignal;
-          if (isMuyuanOnly || product === "待确认") return;
+          const isCompanyOnly = /公司|我方|我们|目标价|目标报价|公司报价/.test(context + line) && !explicitCompany && !hasCompetitorSignal;
+          if (isCompanyOnly || product === "待确认") return;
           const company = explicitCompany || "用户口头报价";
           rows.push(`${company} ${product} ${candidate.price.toFixed(2)} 元/kg`);
         });
@@ -3849,7 +3851,7 @@
         purpose: inferPurpose(text),
         product: products[0] || "待确认",
         products,
-        price: inferMuyuanPrice(text),
+        price: inferCompanyPrice(text),
         competitorPrices: inferManualCompetitorPrices(text)
       };
       metadata.payment = {
@@ -3867,12 +3869,12 @@
       $("customerName").value = metadata.customerName;
       $("visitPurpose").value = metadata.purpose;
       syncProductOptions(metadata.product, metadata.products);
-      $("muyuanPrice").value = metadata.price;
+      $("companyPrice").value = metadata.price;
       if ($("quoteProductInput") && metadata.product !== "待确认") $("quoteProductInput").value = metadata.product;
       if ($("quotePriceInput")) $("quotePriceInput").value = metadata.price !== "待确认" ? metadata.price : "";
       const metadataPrice = numberFromPrice(metadata.price, NaN);
       if (options.forceCompetitor) {
-        setMuyuanQuoteItems(Number.isFinite(metadataPrice) && metadata.product !== "待确认" ? [{ product: metadata.product, price: metadataPrice }] : []);
+        setCompanyQuoteItems(Number.isFinite(metadataPrice) && metadata.product !== "待确认" ? [{ product: metadata.product, price: metadataPrice }] : []);
       }
       if (metadata.competitorPrices || options.forceCompetitor) $("competitorPrices").value = metadata.competitorPrices;
       updateVisitExtractState(metadata);
@@ -3897,8 +3899,8 @@
       if (datalist) datalist.innerHTML = products.filter(product => product !== "待确认").map(product => `<option value="${safeText(product)}"></option>`).join("");
     }
 
-    function getMuyuanQuoteItems() {
-      const listEl = $("muyuanQuoteList");
+    function getCompanyQuoteItems() {
+      const listEl = $("companyQuoteList");
       if (!listEl) return [];
       return [...listEl.querySelectorAll(".quote-card")].map(card => ({
         product: card.dataset.product || "待确认",
@@ -3906,8 +3908,8 @@
       })).filter(item => item.product && item.product !== "待确认" && Number.isFinite(item.price));
     }
 
-    function setMuyuanQuoteItems(items = []) {
-      const listEl = $("muyuanQuoteList");
+    function setCompanyQuoteItems(items = []) {
+      const listEl = $("companyQuoteList");
       if (!listEl) return;
       const normalized = [];
       items.forEach(item => {
@@ -3919,55 +3921,55 @@
         else normalized.push({ product, price });
       });
       listEl.innerHTML = normalized.length ? normalized.map(item => `<div class="quote-card" data-product="${safeText(item.product)}" data-price="${item.price}">
-        <div><b>${safeText(item.product)}</b><span>牧原报价 ${item.price.toFixed(2)} 元/kg</span></div>
+        <div><b>${safeText(item.product)}</b><span>公司报价 ${item.price.toFixed(2)} 元/kg</span></div>
         <span class="tag blue">${item.price.toFixed(2)}</span>
         <button class="secondary quote-remove" type="button" data-product="${safeText(item.product)}"><i data-lucide="x"></i></button>
-      </div>`).join("") : `<div class="empty-history">暂无牧原多品项报价。输入品项和报价后，点击“确认添加到比价表”。</div>`;
+      </div>`).join("") : `<div class="empty-history">暂无公司多品项报价。输入品项和报价后，点击“确认添加到比价表”。</div>`;
       renderIcons();
     }
 
-    function addMuyuanQuoteFromFields() {
+    function addCompanyQuoteFromFields() {
       const product = (($("quoteProductInput") && $("quoteProductInput").value) || $("compareProduct").value || "").trim();
-      const price = numberFromPrice((($("quotePriceInput") && $("quotePriceInput").value) || $("muyuanPrice").value || ""), NaN);
+      const price = numberFromPrice((($("quotePriceInput") && $("quotePriceInput").value) || $("companyPrice").value || ""), NaN);
       if (!product || product === "待确认") {
         showToast("请先输入比价品项");
         return;
       }
       if (!Number.isFinite(price)) {
-        showToast("请填写该品项的牧原报价");
+        showToast("请填写该品项的公司报价");
         return;
       }
       const products = [...new Set([...loadCustomProducts(), product])];
       localStorage.setItem("custom_compare_products", JSON.stringify(products));
       syncProductOptions(product, [product]);
       $("compareProduct").value = product;
-      $("muyuanPrice").value = `${price.toFixed(2)} 元/kg`;
-      const items = getMuyuanQuoteItems().filter(item => item.product !== product);
-      setMuyuanQuoteItems([...items, { product, price }]);
+      $("companyPrice").value = `${price.toFixed(2)} 元/kg`;
+      const items = getCompanyQuoteItems().filter(item => item.product !== product);
+      setCompanyQuoteItems([...items, { product, price }]);
       generateSummary();
       generateAnalysis();
-      showToast("牧原报价项已加入清单");
+      showToast("公司报价项已加入清单");
     }
 
-    function removeMuyuanQuote(product) {
-      setMuyuanQuoteItems(getMuyuanQuoteItems().filter(item => item.product !== product));
+    function removeCompanyQuote(product) {
+      setCompanyQuoteItems(getCompanyQuoteItems().filter(item => item.product !== product));
       generateSummary();
       generateAnalysis();
       showToast("报价项已删除");
     }
 
-    function clearMuyuanQuotes() {
-      setMuyuanQuoteItems([]);
+    function clearCompanyQuotes() {
+      setCompanyQuoteItems([]);
       generateSummary();
       generateAnalysis();
-      showToast("牧原报价清单已清空");
+      showToast("公司报价清单已清空");
     }
 
     function quoteItemsWithFallback() {
-      const items = getMuyuanQuoteItems();
+      const items = getCompanyQuoteItems();
       if (items.length) return items;
       const product = (($("quoteProductInput") && $("quoteProductInput").value) || $("compareProduct").value || "待确认").trim();
-      const price = numberFromPrice((($("quotePriceInput") && $("quotePriceInput").value) || $("muyuanPrice").value || ""), NaN);
+      const price = numberFromPrice((($("quotePriceInput") && $("quotePriceInput").value) || $("companyPrice").value || ""), NaN);
       return product !== "待确认" && Number.isFinite(price) ? [{ product, price }] : [];
     }
 
@@ -3998,10 +4000,10 @@
       }).filter(Boolean);
     }
 
-    function renderPriceBenchmark(productOrQuotes, muyuanPrice, manualText = "") {
+    function renderPriceBenchmark(productOrQuotes, companyPrice, manualText = "") {
       const quoteItems = Array.isArray(productOrQuotes)
         ? productOrQuotes
-        : (Number.isFinite(muyuanPrice) && productOrQuotes !== "待确认" ? [{ product: productOrQuotes, price: muyuanPrice }] : []);
+        : (Number.isFinite(companyPrice) && productOrQuotes !== "待确认" ? [{ product: productOrQuotes, price: companyPrice }] : []);
       const defaultProduct = Array.isArray(productOrQuotes) ? ($("compareProduct") ? $("compareProduct").value : "待确认") : productOrQuotes;
       const manualRows = parseManualCompetitorPrices(manualText);
       const rows = manualRows.map(row => {
@@ -4009,31 +4011,31 @@
         const quote = findQuoteForProduct(rowProduct, quoteItems);
         const price = Number(row.price.toFixed(2));
         const gap = quote ? Number((quote.price - price).toFixed(2)) : null;
-        const tag = gap === null ? ["待比价", "gold"] : gap > 0.2 ? ["牧原高", "red"] : gap < -0.2 ? ["牧原低", "green"] : ["接近", "gold"];
+        const tag = gap === null ? ["待比价", "gold"] : gap > 0.2 ? ["我方高", "red"] : gap < -0.2 ? ["我方低", "green"] : ["接近", "gold"];
         const rate = capitalRateValue();
-        const muyuanDays = muyuanTermDays();
+        const companyDays = companyTermDays();
         const compDays = (row.terms !== null && row.terms !== undefined) ? row.terms : defaultCompDays();
-        const muyuanCap = quote ? capitalCost(quote.price, muyuanDays, rate) : 0;
+        const companyCap = quote ? capitalCost(quote.price, companyDays, rate) : 0;
         const compCap = capitalCost(price, compDays, rate);
-        const gapAdj = gap === null ? null : Number((gap - (compCap - muyuanCap)).toFixed(2));
+        const gapAdj = gap === null ? null : Number((gap - (compCap - companyCap)).toFixed(2));
         return {
           company: row.company,
           type: "资料竞品",
           product: rowProduct,
-          muyuanProduct: quote ? quote.product : "待补录",
-          muyuanPrice: quote ? quote.price : null,
+          companyProduct: quote ? quote.product : "待补录",
+          companyPrice: quote ? quote.price : null,
           price,
           gap,
           gapAdj,
-          muyuanDays,
+          companyDays,
           compDays,
           tag,
           source: "导入/录入",
-          condition: quote ? "资料提取价，规格、账期和配送条件需复核" : "已识别竞品价，需补录该品项牧原报价"
+          condition: quote ? "资料提取价，规格、账期和配送条件需复核" : "已识别竞品价，需补录该品项公司报价"
         };
       });
       if (!rows.length) {
-        return { rows: [], avg: null, lowest: null, highest: null, spread: null, hasMuyuanPrice: quoteItems.length > 0, quoteItems };
+        return { rows: [], avg: null, lowest: null, highest: null, spread: null, hasCompanyPrice: quoteItems.length > 0, quoteItems };
       }
       const avg = rows.reduce((sum, item) => sum + item.price, 0) / rows.length;
       const lowest = rows.reduce((min, item) => item.price < min.price ? item : min, rows[0]);
@@ -4044,7 +4046,7 @@
         lowest,
         highest,
         spread: Number((highest.price - lowest.price).toFixed(2)),
-        hasMuyuanPrice: quoteItems.length > 0,
+        hasCompanyPrice: quoteItems.length > 0,
         quoteItems
       };
     }
@@ -4083,7 +4085,7 @@
       }
       $("loginError").textContent = "";
       document.body.classList.remove("locked");
-      localStorage.setItem("muyuan_ai_user", JSON.stringify({
+      localStorage.setItem("ai_user", JSON.stringify({
         account: account || "demo-manager",
         role: $("loginRole").value,
         loginAt: new Date().toISOString()
@@ -4096,7 +4098,7 @@
 
     function currentRoleName() {
       try {
-        const user = JSON.parse(localStorage.getItem("muyuan_ai_user") || "null");
+        const user = JSON.parse(localStorage.getItem("ai_user") || "null");
         return (user && user.role) || "生鲜客户经理";
       } catch {
         return "生鲜客户经理";
@@ -4106,7 +4108,7 @@
       return /区域经理|大区经理|项目部负责人|区域主管|经营分析员/.test(currentRoleName());
     }
     function logout() {
-      localStorage.removeItem("muyuan_ai_user");
+      localStorage.removeItem("ai_user");
       document.body.classList.add("locked");
       $("currentUser").textContent = "未登录";
       $("currentRole").textContent = $("loginRole").value;
@@ -4378,7 +4380,7 @@
       const products = [
         ...(record.product && record.product !== "待确认" ? [record.product] : []),
         ...inferProducts(visitRecordText(record), record.fileName || ""),
-        ...((record.muyuanQuotes || []).map(item => item.product).filter(Boolean))
+        ...((record.companyQuotes || []).map(item => item.product).filter(Boolean))
       ];
       return [...new Set(products.map(item => String(item).trim()).filter(Boolean))];
     }
@@ -4456,8 +4458,8 @@
         customerName: $("customerName").value || "待确认",
         purpose: $("visitPurpose").value || "待确认",
         product: (($("quoteProductInput") && $("quoteProductInput").value) || $("compareProduct").value || "待确认").trim(),
-        muyuanPrice: $("muyuanPrice").value || "待确认",
-        muyuanQuotes: getMuyuanQuoteItems(),
+        companyPrice: $("companyPrice").value || "待确认",
+        companyQuotes: getCompanyQuoteItems(),
         competitorPrices: $("competitorPrices").value || "",
         payMethod: $("payMethod") ? $("payMethod").value : "待确认",
         termDays: $("termDays") ? $("termDays").value : "",
@@ -4525,11 +4527,11 @@
       $("customerName").value = record.customerName || "待确认";
       $("visitPurpose").value = record.purpose || "新客开发";
       syncProductOptions(record.product || "待确认", [record.product || "待确认"]);
-      $("muyuanPrice").value = record.muyuanPrice || "待确认";
+      $("companyPrice").value = record.companyPrice || "待确认";
       if ($("quoteProductInput")) $("quoteProductInput").value = record.product && record.product !== "待确认" ? record.product : "";
-      if ($("quotePriceInput")) $("quotePriceInput").value = record.muyuanPrice && record.muyuanPrice !== "待确认" ? record.muyuanPrice : "";
-      const legacyPrice = numberFromPrice(record.muyuanPrice, NaN);
-      setMuyuanQuoteItems((record.muyuanQuotes && record.muyuanQuotes.length) ? record.muyuanQuotes : (Number.isFinite(legacyPrice) && record.product !== "待确认" ? [{ product: record.product, price: legacyPrice }] : []));
+      if ($("quotePriceInput")) $("quotePriceInput").value = record.companyPrice && record.companyPrice !== "待确认" ? record.companyPrice : "";
+      const legacyPrice = numberFromPrice(record.companyPrice, NaN);
+      setCompanyQuoteItems((record.companyQuotes && record.companyQuotes.length) ? record.companyQuotes : (Number.isFinite(legacyPrice) && record.product !== "待确认" ? [{ product: record.product, price: legacyPrice }] : []));
       $("competitorPrices").value = record.competitorPrices || "";
       $("transcript").value = record.transcript || "";
       $("summarySet").value = record.summarySet || buildImportedAnalysisSeed(record.transcript || "", applyVisitMetadata(record.transcript || "", record.fileName || "", { forceCompetitor: false }));
@@ -4564,7 +4566,7 @@
     function exportVisitHistoryReportHtml(id) {
       const record = loadVisitHistory().find(item => item.id === id);
       if (!record) return;
-      const quotes = (record.muyuanQuotes || []).map(item => `<tr><td>${safeText(item.product)}</td><td>${Number(item.price).toFixed(2)} 元/kg</td></tr>`).join("") || `<tr><td>${safeText(record.product || "待确认")}</td><td>${safeText(record.muyuanPrice || "待确认")}</td></tr>`;
+      const quotes = (record.companyQuotes || []).map(item => `<tr><td>${safeText(item.product)}</td><td>${Number(item.price).toFixed(2)} 元/kg</td></tr>`).join("") || `<tr><td>${safeText(record.product || "待确认")}</td><td>${safeText(record.companyPrice || "待确认")}</td></tr>`;
       const competitor = parseManualCompetitorPrices(record.competitorPrices || "").map(item => `<tr><td>${safeText(item.company || "用户口头报价")}</td><td>${safeText(item.product || "待确认")}</td><td>${item.price.toFixed(2)} 元/kg</td></tr>`).join("") || `<tr><td colspan="3">未识别到明确竞品报价</td></tr>`;
       const todos = (record.actionItems || extractActionItems(record.transcript || "", record.purpose || "新客开发")).map(item => `<tr><td>${safeText(item.title)}</td><td>${safeText(item.deadline)}</td><td>${safeText(item.priority)}</td><td>${safeText(item.raw || "依据待确认")}</td></tr>`).join("");
       const insights = buildDemandInsights(record.transcript || "");
@@ -4577,9 +4579,9 @@
         table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;border-bottom:1px solid #d7e4f0;text-align:left;vertical-align:top}th{color:#5c7865}
         p{line-height:1.7;margin:6px 0}.tag{display:inline-block;background:#e8f2ff;color:#1976e7;border-radius:6px;padding:4px 8px;font-weight:700}
       </style></head><body><main>
-        <section><h1>牧原生鲜客户经理 AI 拜访汇报</h1><div class="meta">${safeText(record.recordId)}｜${safeText(record.visitTime)}｜${safeText(record.customerName)}｜${safeText(record.purpose)}｜来源：${safeText(record.fileName)}</div></section>
+        <section><h1>生鲜客户经理 AI 拜访汇报</h1><div class="meta">${safeText(record.recordId)}｜${safeText(record.visitTime)}｜${safeText(record.customerName)}｜${safeText(record.purpose)}｜来源：${safeText(record.fileName)}</div></section>
         <section><h2>客户核心诉求</h2><table><thead><tr><th>诉求</th><th>强度</th><th>AI总结</th><th>建议动作</th></tr></thead><tbody>${insightRows}</tbody></table></section>
-        <section><h2>牧原报价清单</h2><table><thead><tr><th>品项</th><th>牧原报价</th></tr></thead><tbody>${quotes}</tbody></table></section>
+        <section><h2>公司报价清单</h2><table><thead><tr><th>品项</th><th>公司报价</th></tr></thead><tbody>${quotes}</tbody></table></section>
         <section><h2>竞品报价识别</h2><table><thead><tr><th>竞品公司</th><th>品项</th><th>报价</th></tr></thead><tbody>${competitor}</tbody></table></section>
         <section><h2>待办事项</h2><table><thead><tr><th>下一步任务</th><th>截止时间</th><th>优先级</th><th>原文依据</th></tr></thead><tbody>${todos || `<tr><td colspan="4">待确认</td></tr>`}</tbody></table></section>
         <section><h2>AI摘要</h2>${htmlParagraphs(record.summaryText || record.summarySet || "暂无AI摘要")}</section>
@@ -4608,10 +4610,10 @@
       $("customerName").value = "待确认";
       $("visitPurpose").value = "新客开发";
       syncProductOptions("待确认");
-      $("muyuanPrice").value = "待确认";
+      $("companyPrice").value = "待确认";
       if ($("quoteProductInput")) $("quoteProductInput").value = "";
       if ($("quotePriceInput")) $("quotePriceInput").value = "";
-      setMuyuanQuoteItems([]);
+      setCompanyQuoteItems([]);
       $("competitorPrices").value = "";
       $("summaryOutput").innerHTML = "";
       updateVisitExtractState({ products: [], competitorPrices: "" });
@@ -4655,7 +4657,7 @@
       const priceStatus = /价格|报价|竞品|供应商/.test(text) ? "客户提到价格或竞品信息，具体数值如未提供需标注待确认。" : "未提取到明确价格信息。";
       const compareProduct = (($("quoteProductInput") && $("quoteProductInput").value) || $("compareProduct").value || "鲜品分割品").trim();
       const quoteItems = quoteItemsWithFallback();
-      const hasMuyuanPrice = quoteItems.length > 0;
+      const hasCompanyPrice = quoteItems.length > 0;
       const benchmark = renderPriceBenchmark(quoteItems, NaN, $("competitorPrices").value);
       const hasCompetitorInfo = $("competitorPrices").value.trim() || quoteItems.length || /价格|报价|竞品|供应商|比价/.test(text);
       const shouldShowPrice = config.includePrice && hasCompetitorInfo;
@@ -4663,20 +4665,20 @@
       const avgDisplay = benchmark.avg === null ? "待确认" : benchmark.avg.toFixed(2);
       const spreadDisplay = benchmark.spread === null ? "待确认" : benchmark.spread.toFixed(2);
       const quoteSummary = quoteItems.length
-        ? `<div class="table-wrap"><table><thead><tr><th>牧原品项</th><th>牧原报价</th></tr></thead><tbody>${quoteItems.map(item => `<tr><td>${safeText(item.product)}</td><td>${item.price.toFixed(2)} 元/kg</td></tr>`).join("")}</tbody></table></div>`
-        : `<p>未录入牧原多品项报价，请在左侧按品项加入报价清单。</p>`;
-      const benchmarkRows = benchmark.rows.length ? benchmark.rows.map(item => `<tr><td>${safeText(item.company)}</td><td>${safeText(item.product)}</td><td>${item.muyuanPrice === null ? "待补录" : item.muyuanPrice.toFixed(2) + " 元/kg"}</td><td>${Number.isFinite(item.price) ? item.price.toFixed(2) + " 元/kg" : "待确认"}</td><td>${item.gap === null ? "待补录牧原报价" : `${item.gap > 0 ? "+" : ""}${item.gap.toFixed(2)} 元/kg`}</td><td>牧原${item.muyuanDays ? item.muyuanDays + "天" : "现款"}｜竞品${item.compDays ? item.compDays + "天" : "现款"}</td><td>${item.gapAdj === null ? "待补录" : `${item.gapAdj > 0 ? "+" : ""}${item.gapAdj.toFixed(2)} 元/kg`}</td><td>${item.source}</td><td>${item.condition}</td><td><span class="tag ${item.tag[1]}">${item.tag[0]}</span></td></tr>`).join("") : `<tr><td colspan="10">导入资料未识别到明确竞品报价，需补录竞品公司、品项、价格和条件后再比对。</td></tr>`;
+        ? `<div class="table-wrap"><table><thead><tr><th>公司品项</th><th>公司报价</th></tr></thead><tbody>${quoteItems.map(item => `<tr><td>${safeText(item.product)}</td><td>${item.price.toFixed(2)} 元/kg</td></tr>`).join("")}</tbody></table></div>`
+        : `<p>未录入公司多品项报价，请在左侧按品项加入报价清单。</p>`;
+      const benchmarkRows = benchmark.rows.length ? benchmark.rows.map(item => `<tr><td>${safeText(item.company)}</td><td>${safeText(item.product)}</td><td>${item.companyPrice === null ? "待补录" : item.companyPrice.toFixed(2) + " 元/kg"}</td><td>${Number.isFinite(item.price) ? item.price.toFixed(2) + " 元/kg" : "待确认"}</td><td>${item.gap === null ? "待补录公司报价" : `${item.gap > 0 ? "+" : ""}${item.gap.toFixed(2)} 元/kg`}</td><td>公司${item.companyDays ? item.companyDays + "天" : "现款"}｜竞品${item.compDays ? item.compDays + "天" : "现款"}</td><td>${item.gapAdj === null ? "待补录" : `${item.gapAdj > 0 ? "+" : ""}${item.gapAdj.toFixed(2)} 元/kg`}</td><td>${item.source}</td><td>${item.condition}</td><td><span class="tag ${item.tag[1]}">${item.tag[0]}</span></td></tr>`).join("") : `<tr><td colspan="10">导入资料未识别到明确竞品报价，需补录竞品公司、品项、价格和条件后再比对。</td></tr>`;
       const priceBlocks = shouldShowPrice ? (
         block("价格与竞品信息", "badge-dollar-sign", `<p>${priceStatus}</p>`) +
-        block("牧原多品项报价", "list-plus", quoteSummary) +
-        block("牧原同品类竞品比价", "scale", `<div class="mini-grid">
-          <div class="mini-card"><span>${icon("building-2")}牧原报价项</span><strong>${priceDisplay}</strong></div>
+        block("公司多品项报价", "list-plus", quoteSummary) +
+        block("公司同品类竞品比价", "scale", `<div class="mini-grid">
+          <div class="mini-card"><span>${icon("building-2")}公司报价项</span><strong>${priceDisplay}</strong></div>
           <div class="mini-card"><span>${icon("calculator")}竞品均价</span><strong>${avgDisplay}</strong></div>
           <div class="mini-card"><span>${icon("arrow-up-down")}价差区间</span><strong>${spreadDisplay}</strong></div>
-        </div><div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>公司</th><th>同品类</th><th>牧原报价</th><th>同行报价</th><th>表面价差</th><th>账期条件</th><th>综合价差(含账期)</th><th>来源</th><th>条件差异</th><th>状态</th></tr></thead><tbody>${benchmarkRows}</tbody></table></div><p style="margin-top:10px;color:var(--muted)">说明：优先使用导入资料和手动录入价格。账期条件自动识别（可在左侧修正），综合价差 = 表面价差 − 账期资金成本差（资金成本 = 单价 × 账期天数 ÷ 365 × 年化资金成本率，默认 6%）。匹配不到时显示待补录，不自动生成假竞品报价。</p>`)
+        </div><div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>公司</th><th>同品类</th><th>公司报价</th><th>同行报价</th><th>表面价差</th><th>账期条件</th><th>综合价差(含账期)</th><th>来源</th><th>条件差异</th><th>状态</th></tr></thead><tbody>${benchmarkRows}</tbody></table></div><p style="margin-top:10px;color:var(--muted)">说明：优先使用导入资料和手动录入价格。账期条件自动识别（可在左侧修正），综合价差 = 表面价差 − 账期资金成本差（资金成本 = 单价 × 账期天数 ÷ 365 × 年化资金成本率，默认 6%）。匹配不到时显示待补录，不自动生成假竞品报价。</p>`)
       ) : "";
-      let talkText = shouldShowPrice && hasMuyuanPrice
-        ? `您说的价格我先记下来，但我想把几个条件对齐后再比：同一品项、同一规格、同一鲜冻状态、同一配送时效、同一账期和售后责任。我们可以先按${quoteItems.map(item => item.product).join("、")}分别对齐牧原报价和同行报价，再选一个主销规格做小量试单。`
+      let talkText = shouldShowPrice && hasCompanyPrice
+        ? `您说的价格我先记下来，但我想把几个条件对齐后再比：同一品项、同一规格、同一鲜冻状态、同一配送时效、同一账期和售后责任。我们可以先按${quoteItems.map(item => item.product).join("、")}分别对齐公司报价和同行报价，再选一个主销规格做小量试单。`
         : config.talk;
       const payment = {
         payMethod: ($("payMethod") && $("payMethod").value) || "待确认",
@@ -4792,7 +4794,7 @@
           ]))
         : "";
       const taskFourRows = summary.competitors.length
-        ? summary.competitors.map(item => `<tr><td>${safeText(item.customer)}</td><td>${safeText(item.company || "用户口头报价")}</td><td>${safeText(item.product || "待确认")}</td><td>${item.price.toFixed(2)} 元/kg</td><td>${safeText(item.source)}</td><td>与牧原报价清单同品项比价，复核规格、配送和账期</td></tr>`).join("")
+        ? summary.competitors.map(item => `<tr><td>${safeText(item.customer)}</td><td>${safeText(item.company || "用户口头报价")}</td><td>${safeText(item.product || "待确认")}</td><td>${item.price.toFixed(2)} 元/kg</td><td>${safeText(item.source)}</td><td>与公司报价清单同品项比价，复核规格、配送和账期</td></tr>`).join("")
         : `<tr><td colspan="6">历史记录中暂未识别到明确竞品报价。请在拜访资料里保留品项、价格和供应商描述，系统会自动识别。</td></tr>`;
       const todoRows = summary.todos.length
         ? sortTodoItems(summary.todos).slice(0, 8).map(item => `<tr><td>${safeText(item.customer)}</td><td>${safeText(item.purpose)}</td><td>${safeText(item.title)}</td><td>${safeText(item.deadline)}</td><td><span class="tag ${item.priority === "P0" ? "red" : item.priority === "P1" ? "gold" : "blue"}">${safeText(item.priority)}</span></td></tr>`).join("")
@@ -4861,8 +4863,8 @@
     function initRealMaps() {
       const zones = window.__mapZonesCache || [];
       document.querySelectorAll(".real-map[data-real-map]").forEach(el => {
-        if (el.__muyuanMapDone) return;
-        el.__muyuanMapDone = true;
+        if (el.__mapDone) return;
+        el.__mapDone = true;
         if (typeof window.L === "undefined" || !zones.length) {
           el.outerHTML = offlineMapNotice();
           return;
@@ -4896,9 +4898,9 @@
             const openRate = Math.round((zone.developed / Math.max(1, zone.developed + zone.undeveloped + zone.blank)) * 100);
             const status = zone.potential >= 85 ? "高潜" : zone.potential >= 75 ? "重点" : zone.potential >= 65 ? "一般" : "摸排";
             const color = heatColor(zone.potential);
-            const icon = L.divIcon({ className: "muyuan-marker-icon", html: `<div class="muyuan-pin" style="--pin:${color}"><span>${safeText(zone.name)}</span></div>`, iconSize: [0, 0], iconAnchor: [0, 0], popupAnchor: [0, -22] });
+            const icon = L.divIcon({ className: "company-marker-icon", html: `<div class="company-pin" style="--pin:${color}"><span>${safeText(zone.name)}</span></div>`, iconSize: [0, 0], iconAnchor: [0, 0], popupAnchor: [0, -22] });
             L.marker(coord, { icon }).addTo(map).bindPopup(
-              `<div class="muyuan-pop"><b>${safeText(zone.name)}｜${status} ${zone.potential}</b><div>已开发：${zone.developed} 户</div><div>未开发：${zone.undeveloped} 户</div><div>空白市场：${zone.blank} 个</div><div>开发率：${openRate}%</div><div>动作：${safeText(zone.route)}</div></div>`
+              `<div class="company-pop"><b>${safeText(zone.name)}｜${status} ${zone.potential}</b><div>已开发：${zone.developed} 户</div><div>未开发：${zone.undeveloped} 户</div><div>空白市场：${zone.blank} 个</div><div>开发率：${openRate}%</div><div>动作：${safeText(zone.route)}</div></div>`
             );
           });
           const slowMap = window.__mapSlowCache || {};
@@ -4908,8 +4910,8 @@
               const coord = cityCoords[cityName];
               if (!coord) return;
               const count = slowMap[cityName];
-              const slowIcon = L.divIcon({ className: "muyuan-marker-icon", html: `<div class="muyuan-pin" style="--pin:#a855f7"><span>滞销承接 ${count} 户</span></div>`, iconSize: [0, 0], iconAnchor: [0, 0], popupAnchor: [0, -24] });
-              L.marker(coord, { icon: slowIcon }).addTo(map).bindPopup(`<div class="muyuan-pop"><b>${safeText(cityName)}｜滞销品可承接 ${count} 户</b><div>来自拜访历史 / 成功案例 / 客户线索的匹配客户。</div><div>建议：先小批量试销，核实走货与损耗后再放量。</div></div>`);
+              const slowIcon = L.divIcon({ className: "company-marker-icon", html: `<div class="company-pin" style="--pin:#a855f7"><span>滞销承接 ${count} 户</span></div>`, iconSize: [0, 0], iconAnchor: [0, 0], popupAnchor: [0, -24] });
+              L.marker(coord, { icon: slowIcon }).addTo(map).bindPopup(`<div class="company-pop"><b>${safeText(cityName)}｜滞销品可承接 ${count} 户</b><div>来自拜访历史 / 成功案例 / 客户线索的匹配客户。</div><div>建议：先小批量试销，核实走货与损耗后再放量。</div></div>`);
             });
           }
           if (points.length) map.fitBounds(L.latLngBounds(points), { padding: [24, 24], maxZoom: 9 });
@@ -5305,7 +5307,7 @@
     if ($("quotePriceInput")) $("quotePriceInput").addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        addMuyuanQuoteFromFields();
+        addCompanyQuoteFromFields();
       }
     });
     $("saveSummary").addEventListener("click", () => {
@@ -5315,20 +5317,20 @@
         customerName: $("customerName").value,
         visitPurpose: $("visitPurpose").value,
         compareProduct: $("quoteProductInput") && $("quoteProductInput").value ? $("quoteProductInput").value : $("compareProduct").value,
-        muyuanPrice: $("muyuanPrice").value,
-        muyuanQuotes: getMuyuanQuoteItems(),
+        companyPrice: $("companyPrice").value,
+        companyQuotes: getCompanyQuoteItems(),
         competitorPrices: $("competitorPrices").value,
         transcript: $("transcript").value
       }));
       saveVisitHistoryRecord("草稿保存");
       showToast("草稿已保存");
     });
-    $("addMuyuanQuote").addEventListener("click", addMuyuanQuoteFromFields);
-    $("clearMuyuanQuotes").addEventListener("click", clearMuyuanQuotes);
-    $("muyuanQuoteList").addEventListener("click", (event) => {
+    $("addCompanyQuote").addEventListener("click", addCompanyQuoteFromFields);
+    $("clearCompanyQuotes").addEventListener("click", clearCompanyQuotes);
+    $("companyQuoteList").addEventListener("click", (event) => {
       const button = event.target.closest(".quote-remove");
       if (!button) return;
-      removeMuyuanQuote(button.dataset.product);
+      removeCompanyQuote(button.dataset.product);
     });
     $("clearVisitHistory").addEventListener("click", clearVisitHistory);
     $("visitHistoryList").addEventListener("click", (event) => {
@@ -5354,7 +5356,7 @@
     });
 
     syncProductOptions("待确认");
-    setMuyuanQuoteItems([]);
+    setCompanyQuoteItems([]);
     updateVisitExtractState({ products: [], competitorPrices: "" });
     renderVisitHistory();
     try {
@@ -5397,7 +5399,7 @@
       showToast("Agent 后端地址已保存");
     });
     refreshAgentStatus();
-    const THEME_KEY = "muyuan_ui_theme";
+    const THEME_KEY = "ui_theme";
     function applyTheme(name) {
       document.documentElement.setAttribute("data-theme", name || "default");
       localStorage.setItem(THEME_KEY, name || "default");

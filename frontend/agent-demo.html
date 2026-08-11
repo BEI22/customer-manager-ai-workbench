@@ -27,7 +27,7 @@
   textarea, input[type=text] { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: inherit; font-size: 13px; background: rgba(255,255,255,.9); color: var(--text); }
   textarea { resize: vertical; }
   textarea#visitText { min-height: 210px; line-height: 1.6; }
-  textarea#muyuanText { min-height: 70px; }
+  textarea#companyText { min-height: 70px; }
   .btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
   button { border: 0; border-radius: 8px; padding: 9px 16px; font: inherit; font-size: 13px; cursor: pointer; }
   button.primary { background: var(--primary); color: #fff; }
@@ -75,8 +75,8 @@
       <h3>📋 输入拜访资料</h3>
       <label>客户拜访文本（必填）</label>
       <textarea id="visitText" placeholder="粘贴客户拜访录音转写 / 拜访纪要文本…">今天回访南阳批发客户张老板，上次小批量试单的白条走货很好，损耗低，客户说想继续合作，本月加量到两吨。客户主要做商超和农贸档口，最关心配送时效和品质稳定。客户提到最近手头有点紧，上次那批货款还没结，还欠着我们三万五，说下个月再结。竞品温氏白条走18.6，给30天账期；新希望猪前腿给到20.4元。</textarea>
-      <label>牧原报价（可选，每行：品项 价格，如 "白条 19.60"）</label>
-      <textarea id="muyuanText" placeholder="白条 19.60&#10;猪前腿 20.80"></textarea>
+      <label>公司报价（可选，每行：品项 价格，如 "白条 19.60"）</label>
+      <textarea id="companyText" placeholder="白条 19.60&#10;猪前腿 20.80"></textarea>
       <label>后端 API 地址</label>
       <input type="text" id="apiBase" value="http://127.0.0.1:8000" />
       <div class="btn-row">
@@ -119,9 +119,9 @@ function card(title, body) {
   return `<div class="card"><h4>${title}</h4>${body}</div>`;
 }
 
-function parseMuyuanItems() {
+function parseCompanyItems() {
   const rows = [];
-  $("muyuanText").value.split(/\n+/).forEach(line => {
+  $("companyText").value.split(/\n+/).forEach(line => {
     const m = line.trim().match(/^(.+?)\s+(\d+(?:\.\d+)?)$/);
     if (m) rows.push({ product: m[1].trim(), price: parseFloat(m[2]) });
   });
@@ -153,9 +153,9 @@ function renderResult(d) {
 
   // 竞品比价
   const bm = d.benchmark || {};
-  const rows = (bm.rows || []).map(r => `<tr><td>${esc(r.company)}</td><td>${esc(r.product)}</td><td>${r.muyuanPrice != null ? r.muyuanPrice.toFixed(2) : "待补录"}</td><td>${r.competitorPrice.toFixed(2)}</td><td>${r.surfaceGap == null ? "-" : (r.surfaceGap > 0 ? "+" : "") + r.surfaceGap.toFixed(2)}</td><td>牧原${r.muyuanDays ? r.muyuanDays + "天" : "现款"}｜竞品${r.compDays ? r.compDays + "天" : "现款"}</td><td>${r.gapAdj == null ? "-" : (r.gapAdj > 0 ? "+" : "") + r.gapAdj.toFixed(2)}</td></tr>`).join("");
+  const rows = (bm.rows || []).map(r => `<tr><td>${esc(r.company)}</td><td>${esc(r.product)}</td><td>${r.companyPrice != null ? r.companyPrice.toFixed(2) : "待补录"}</td><td>${r.competitorPrice.toFixed(2)}</td><td>${r.surfaceGap == null ? "-" : (r.surfaceGap > 0 ? "+" : "") + r.surfaceGap.toFixed(2)}</td><td>公司${r.companyDays ? r.companyDays + "天" : "现款"}｜竞品${r.compDays ? r.compDays + "天" : "现款"}</td><td>${r.gapAdj == null ? "-" : (r.gapAdj > 0 ? "+" : "") + r.gapAdj.toFixed(2)}</td></tr>`).join("");
   html += card("⚖ 竞品比价（含账期资金成本）",
-    rows ? `<table><thead><tr><th>竞品</th><th>品项</th><th>牧原报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${rows}</tbody></table>` :
+    rows ? `<table><thead><tr><th>竞品</th><th>品项</th><th>公司报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${rows}</tbody></table>` :
     `<span class="empty">未识别到明确竞品报价。</span>`);
 
   // 相似成功案例
@@ -190,7 +190,7 @@ async function run() {
     const resp = await fetch(`${base}/api/agent/run`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, muyuan_items: parseMuyuanItems() })
+      body: JSON.stringify({ text, company_items: parseCompanyItems() })
     });
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const reader = resp.body.getReader();
@@ -250,7 +250,7 @@ async function checkHealth() {
 $("runBtn").addEventListener("click", run);
 $("sampleBtn").addEventListener("click", () => {
   $("visitText").value = "今天首次拜访郑州餐饮连锁客户李总，做连锁快餐，需要分割品，最担心出成率和到货稳定，当前有固定供应商，想先看看我们的配送时效再做决定。";
-  $("muyuanText").value = "分割品 20.80";
+  $("companyText").value = "分割品 20.80";
 });
 $("apiBase").addEventListener("change", checkHealth);
 checkHealth();
