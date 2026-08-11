@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>客户经理 AI 作战台 · Agent 演示</title>
+<style>
+  :root {
+    --bg: #eaf8ef; --panel: rgba(255,255,255,.82); --line: rgba(52,140,78,.16);
+    --text: #12301f; --muted: #5c7865; --primary: #328844; --red: #d04743;
+    --gold: #c19135; --blue: #1685a9; --cyan: #119c94;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: linear-gradient(180deg, rgba(232,249,235,.75), rgba(249,253,245,.9)); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 22px 18px 60px; }
+  header.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  header.top h1 { font-size: 20px; margin: 0; }
+  header.top .sub { color: var(--muted); font-size: 13px; }
+  .badge { font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+  .badge.deepseek { background: rgba(50,136,68,.14); color: #1f7a35; }
+  .badge.rule { background: rgba(193,145,53,.16); color: #8a6515; }
+  .grid { display: grid; grid-template-columns: 380px 1fr; gap: 16px; }
+  @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: 0 14px 36px rgba(35,98,54,.08); }
+  .panel h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+  textarea, input[type=text] { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: inherit; font-size: 13px; background: rgba(255,255,255,.9); color: var(--text); }
+  textarea { resize: vertical; }
+  textarea#visitText { min-height: 210px; line-height: 1.6; }
+  textarea#muyuanText { min-height: 70px; }
+  .btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  button { border: 0; border-radius: 8px; padding: 9px 16px; font: inherit; font-size: 13px; cursor: pointer; }
+  button.primary { background: var(--primary); color: #fff; }
+  button.secondary { background: rgba(50,136,68,.1); color: #1f7a35; }
+  button:disabled { opacity: .55; cursor: not-allowed; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+  .log { background: #0b1f16; color: #d8f3e2; border-radius: 10px; padding: 12px 14px; font-family: "Cascadia Code", Consolas, monospace; font-size: 12.5px; line-height: 1.8; min-height: 180px; max-height: 300px; overflow: auto; white-space: pre-wrap; }
+  .log .t { color: #7dd3a8; }
+  .log .tool { color: #ffd58a; }
+  .log .ok { color: #7cc7ff; }
+  .log .err { color: #ff9d9d; }
+  .results { display: grid; gap: 12px; margin-top: 14px; }
+  .card { background: rgba(255,255,255,.92); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .card h4 { margin: 0 0 8px; font-size: 13.5px; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 4px 0; font-size: 13px; line-height: 1.7; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .tag { display: inline-block; font-size: 11.5px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+  .tag.red { background: rgba(208,71,67,.12); color: var(--red); }
+  .tag.orange { background: rgba(232,121,50,.14); color: #c05621; }
+  .tag.gold { background: rgba(193,145,53,.15); color: #8a6515; }
+  .tag.green { background: rgba(50,136,68,.13); color: #1f7a35; }
+  .tag.blue { background: rgba(22,133,169,.13); color: #126a86; }
+  .mini { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mini .cell { flex: 1; min-width: 110px; background: rgba(50,136,68,.06); border-radius: 8px; padding: 8px 10px; font-size: 12px; }
+  .mini .cell b { display: block; font-size: 15px; margin-top: 2px; }
+  .empty { color: var(--muted); font-size: 13px; }
+  .log-row { display:flex; align-items:center; gap:6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot.on { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; }
+  .dot.off { background: #c19135; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🐖 客户经理 AI 作战台 · Agent 演示</h1>
+    <span class="sub">FastAPI + DeepSeek（ReAct 工具调用）· 拜访纪要 / 账期风控 / 竞品比价 / 成功案例检索</span>
+    <span class="badge" id="modeBadge">连接中…</span>
+  </header>
+
+  <div class="grid">
+    <div class="panel">
+      <h3>📋 输入拜访资料</h3>
+      <label>客户拜访文本（必填）</label>
+      <textarea id="visitText" placeholder="粘贴客户拜访录音转写 / 拜访纪要文本…">今天回访南阳批发客户张老板，上次小批量试单的白条走货很好，损耗低，客户说想继续合作，本月加量到两吨。客户主要做商超和农贸档口，最关心配送时效和品质稳定。客户提到最近手头有点紧，上次那批货款还没结，还欠着我们三万五，说下个月再结。竞品温氏白条走18.6，给30天账期；新希望猪前腿给到20.4元。</textarea>
+      <label>牧原报价（可选，每行：品项 价格，如 "白条 19.60"）</label>
+      <textarea id="muyuanText" placeholder="白条 19.60&#10;猪前腿 20.80"></textarea>
+      <label>后端 API 地址</label>
+      <input type="text" id="apiBase" value="http://127.0.0.1:8000" />
+      <div class="btn-row">
+        <button class="primary" id="runBtn">▶ 运行 Agent</button>
+        <button class="secondary" id="sampleBtn">用示例</button>
+      </div>
+      <div class="hint">
+        <b>说明：</b>后端启动方式：<code>cd backend && python -m uvicorn app.main:app --port 8000</code>。<br/>
+        配置 <code>backend/.env</code> 中的 <code>DEEPSEEK_API_KEY</code> 后为真实模型模式（Agent 自主决定调用哪些工具）；未配置时使用规则模式（流程相同，零成本可演示）。
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>🤖 Agent 思考过程（流式）</h3>
+      <div class="log" id="log">等待运行…</div>
+
+      <div class="results" id="results"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const logEl = $("log");
+const resultsEl = $("results");
+
+function logLine(text, cls = "") {
+  const div = document.createElement("div");
+  div.className = "log-row";
+  div.innerHTML = `<span class="${cls}">${text}</span>`;
+  logEl.appendChild(div);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+function card(title, body) {
+  return `<div class="card"><h4>${title}</h4>${body}</div>`;
+}
+
+function parseMuyuanItems() {
+  const rows = [];
+  $("muyuanText").value.split(/\n+/).forEach(line => {
+    const m = line.trim().match(/^(.+?)\s+(\d+(?:\.\d+)?)$/);
+    if (m) rows.push({ product: m[1].trim(), price: parseFloat(m[2]) });
+  });
+  return rows;
+}
+
+function tagColor(level) {
+  return ({ "极高": "red", "高": "orange", "中": "gold", "低": "green" })[level] || "blue";
+}
+
+function renderResult(d) {
+  let html = "";
+  // 总览
+  html += card("📌 拜访总结", `<p>${esc(d.summary || "待确认")}</p>` +
+    `<div class="mini">` +
+    `<div class="cell">拜访目的<b>${esc(d.purpose || "待确认")}</b></div>` +
+    `<div class="cell">客户类型<b>${esc((d.customerProfile && d.customerProfile.type) || "待确认")}</b></div>` +
+    `<div class="cell">关注点<b>${esc((d.customerProfile && d.customerProfile.concern) || "待确认")}</b></div>` +
+    `<div class="cell">模式<b>${d.mode === "llm" ? "DeepSeek 模型" : "规则模式"}</b></div>` +
+    `</div>`);
+
+  // 账期风控
+  const cr = d.creditRisk || {};
+  html += card("🛡 账期风险与应收账款",
+    `<div class="mini"><div class="cell">风险等级<b><span class="tag ${tagColor(cr.level)}">${esc(cr.level || "待确认")} ${cr.score != null ? cr.score + " 分" : ""}</span></b></div>` +
+    `<div class="cell">付款方式<b>${esc(cr.payMethod || "待确认")}</b></div>` +
+    `<div class="cell">触发因子<b>${esc((cr.factors || []).join("、") || "无")}</b></div></div>` +
+    `<p><b>建议动作：</b>${esc((cr.action || []).join("；") || "待确认")}</p>`);
+
+  // 竞品比价
+  const bm = d.benchmark || {};
+  const rows = (bm.rows || []).map(r => `<tr><td>${esc(r.company)}</td><td>${esc(r.product)}</td><td>${r.muyuanPrice != null ? r.muyuanPrice.toFixed(2) : "待补录"}</td><td>${r.competitorPrice.toFixed(2)}</td><td>${r.surfaceGap == null ? "-" : (r.surfaceGap > 0 ? "+" : "") + r.surfaceGap.toFixed(2)}</td><td>牧原${r.muyuanDays ? r.muyuanDays + "天" : "现款"}｜竞品${r.compDays ? r.compDays + "天" : "现款"}</td><td>${r.gapAdj == null ? "-" : (r.gapAdj > 0 ? "+" : "") + r.gapAdj.toFixed(2)}</td></tr>`).join("");
+  html += card("⚖ 竞品比价（含账期资金成本）",
+    rows ? `<table><thead><tr><th>竞品</th><th>品项</th><th>牧原报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${rows}</tbody></table>` :
+    `<span class="empty">未识别到明确竞品报价。</span>`);
+
+  // 相似成功案例
+  const sc = d.similarCases || {};
+  const scRows = (sc.hits || []).map(h => `<tr><td>${esc(h.customerName)}</td><td>${h.score}<div class="mini" style="margin-top:4px"><span class="tag ${tagColor(h.score >= 80 ? "极高" : h.score >= 60 ? "高" : "中")}">${h.score}</span></div></td><td>${esc(h.type || "")}｜${esc(h.product || "")}｜${esc(h.concern || "")}</td><td>${esc(h.breakthrough || "")}</td><td>${esc(h.result || "")}</td><td>${esc((h.similar || []).join("、") || "-")}</td></tr>`).join("");
+  html += card("🎯 相似成功客户参考（向量检索）",
+    scRows ? `<table><thead><tr><th>相似老客户</th><th>相似度</th><th>画像与品类</th><th>有效打法</th><th>结果</th><th>相似点</th></tr></thead><tbody>${scRows}</tbody></table>` :
+    `<span class="empty">未检索到相似成功案例（可在后端 data/success_cases.json 增加案例）。</span>`);
+
+  // 话术
+  html += card("💬 推荐话术", `<p>${esc(d.talk || "待生成")}</p>`);
+
+  // 待办 + 风险提醒
+  const acts = (d.actions || []).map(a => `<li>${esc(a.title || a)}${a.deadline ? `（${esc(a.deadline)}）` : ""}</li>`).join("");
+  html += card("✅ 下一步动作", acts ? `<ul style="margin:4px 0;padding-left:20px;font-size:13px;line-height:1.9">${acts}</ul>` : `<span class="empty">无</span>`);
+  const rm = d.riskReminders || [];
+  const rmLines = Array.isArray(rm) ? rm.join("；") : rm;
+  html += card("⚠️ 风险提醒", `<p>${esc(rmLines || "账期、授信和价格承诺以公司授权口径为准。")}</p>`);
+
+  resultsEl.innerHTML = html;
+}
+
+async function run() {
+  const text = $("visitText").value.trim();
+  if (!text) { logLine("请先输入拜访资料", "err"); return; }
+  const base = $("apiBase").value.trim().replace(/\/+$/, "");
+  $("runBtn").disabled = true;
+  logEl.innerHTML = "";
+  resultsEl.innerHTML = "";
+  logLine("启动 Agent…", "t");
+  try {
+    const resp = await fetch(`${base}/api/agent/run`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, muyuan_items: parseMuyuanItems() })
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    let buf = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      let idx;
+      while ((idx = buf.indexOf("\n\n")) >= 0) {
+        const chunk = buf.slice(0, idx);
+        buf = buf.slice(idx + 2);
+        const line = chunk.split("\n").find(l => l.startsWith("data: "));
+        if (!line) continue;
+        let ev;
+        try { ev = JSON.parse(line.slice(6)); } catch { continue; }
+        handleEvent(ev);
+      }
+    }
+    logLine("✔ Agent 执行完成", "ok");
+  } catch (err) {
+    logLine(`✘ 调用失败：${err.message}（请确认后端已启动）`, "err");
+  } finally {
+    $("runBtn").disabled = false;
+  }
+}
+
+function handleEvent(ev) {
+  if (ev.type === "thinking") {
+    logLine("💡 " + ev.step, "t");
+  } else if (ev.type === "tool_start") {
+    logLine(`🔧 调用工具 ${ev.name} 参数=${JSON.stringify(ev.args)}`, "tool");
+  } else if (ev.type === "tool_end") {
+    logLine(`✔ ${ev.name} → ${ev.summary}`, "ok");
+  } else if (ev.type === "result") {
+    renderResult(ev.data);
+  } else if (ev.type === "error") {
+    logLine("✘ " + ev.message, "err");
+  }
+}
+
+async function checkHealth() {
+  const base = $("apiBase").value.trim().replace(/\/+$/, "");
+  try {
+    const r = await fetch(`${base}/api/health`);
+    const j = await r.json();
+    const badge = $("modeBadge");
+    badge.textContent = j.llm_mode === "deepseek" ? "● DeepSeek 真实模型" : "● 规则模式（未配 Key）";
+    badge.className = "badge " + (j.llm_mode === "deepseek" ? "deepseek" : "rule");
+  } catch {
+    $("modeBadge").textContent = "● 后端未连接";
+    $("modeBadge").className = "badge rule";
+  }
+}
+
+$("runBtn").addEventListener("click", run);
+$("sampleBtn").addEventListener("click", () => {
+  $("visitText").value = "今天首次拜访郑州餐饮连锁客户李总，做连锁快餐，需要分割品，最担心出成率和到货稳定，当前有固定供应商，想先看看我们的配送时效再做决定。";
+  $("muyuanText").value = "分割品 20.80";
+});
+$("apiBase").addEventListener("change", checkHealth);
+checkHealth();
+</script>
+</body>
+</html>

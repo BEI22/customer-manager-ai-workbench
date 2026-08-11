@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>客户经理 AI 作战台 · 测试文本集</title>
+<style>
+  :root { --bg:#eaf8ef; --panel:#fff; --line:rgba(52,140,78,.18); --text:#12301f; --muted:#5c7865; --primary:#328844; --gold:#b07a1a; --red:#d04743; --blue:#1685a9; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:linear-gradient(180deg,#eaf8ef,#f6fbf4); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { max-width:880px; margin:0 auto; padding:24px 16px 60px; }
+  h1 { font-size:22px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:18px; line-height:1.7; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:14px; box-shadow:0 8px 24px rgba(35,98,54,.06); }
+  .card .head { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+  .card h3 { margin:0; font-size:15px; }
+  .tags { display:flex; gap:6px; flex-wrap:wrap; }
+  .tag { font-size:11.5px; padding:2px 8px; border-radius:12px; font-weight:600; }
+  .tag.green { background:rgba(50,136,68,.12); color:#1f7a35; }
+  .tag.blue { background:rgba(22,133,169,.12); color:#126a86; }
+  .tag.gold { background:rgba(176,122,26,.14); color:#8a6515; }
+  .tag.red { background:rgba(208,71,67,.12); color:#c0392b; }
+  .txt { background:#f3faf5; border:1px dashed var(--line); border-radius:8px; padding:10px 12px; font-size:13.5px; line-height:1.9; color:#12301f; }
+  .btn { border:0; border-radius:7px; padding:7px 14px; font:inherit; font-size:12.5px; cursor:pointer; background:var(--primary); color:#fff; white-space:nowrap; }
+  .btn:hover { opacity:.9; }
+  .copied { background:#1f9d55 !important; }
+  .note { color:var(--muted); font-size:12px; margin-top:10px; line-height:1.8; }
+  table { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:6px; }
+  th,td { border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; }
+  th { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧪 客户经理 AI 作战台 · 测试文本集</h1>
+  <div class="sub">
+    使用方法：<b>拜访助手</b> → 粘贴文本 → 点"生成总结"（后端在线时走真实 Agent）；<br/>
+    <b>找客户</b> → 粘贴新客文本 → 点"生成开发方案"（配合"滞销品承接"填 <code>白条</code> 可测地图标注）；<br/>
+    <b>数据看板</b> / <b>成功记忆库</b> 会随拜访记录自动联动。
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>① 新客开发 · 餐饮客户</h3><button class="btn" data-copy="t1">复制文本</button></div>
+    <div class="tags"><span class="tag green">新客开发</span><span class="tag blue">相似成功案例</span><span class="tag blue">找客户</span></div>
+    <div class="txt" id="t1">今天首次拜访郑州餐饮连锁客户李总，做连锁快餐，需要分割品，最担心出成率和到货稳定，当前有固定供应商，想先看看我们的配送时效再做决定。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>② 报价沟通 · 竞品比价 + 账期</h3><button class="btn" data-copy="t2">复制文本</button></div>
+    <div class="tags"><span class="tag green">报价沟通</span><span class="tag blue">竞品比价</span><span class="tag blue">综合价差</span><span class="tag gold">账期风控</span></div>
+    <div class="txt" id="t2">今天拜访南阳批发客户张老板谈报价。客户说温氏白条走18.6，给30天账期；新希望猪前腿给到20.4元。客户希望我们白条给到19.2，账期月结30天，说价格合适就长期合作。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>③ 质量投诉处理</h3><button class="btn" data-copy="t3">复制文本</button></div>
+    <div class="tags"><span class="tag red">质量投诉</span><span class="tag red">P0 待办</span><span class="tag blue">风险提醒</span></div>
+    <div class="txt" id="t3">今天处理许昌商超客户的客诉。客户反馈上周到货的白条有一批色泽发暗、出成率低，要求赔付并整改。客户说如果再出现质量问题就考虑换供应商。已约本周五到现场核实批次和证据。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>④ 老客复购 · 成功记忆自动沉淀</h3><button class="btn" data-copy="t4">复制文本</button></div>
+    <div class="tags"><span class="tag green">老客复购</span><span class="tag green">成功记忆沉淀</span><span class="tag blue">相似案例</span></div>
+    <div class="txt" id="t4">今天回访洛阳商超客户，上次小批量试单的鲜品走货很好，损耗低，客户说想继续合作，本月加量到两吨，下个月可能再翻一倍。客户主要做商超和农贸档口，最关心配送时效和品质稳定。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑤ 账期高风险 · 催收待办</h3><button class="btn" data-copy="t5">复制文本</button></div>
+    <div class="tags"><span class="tag red">账期极高风险</span><span class="tag red">P0 催收</span><span class="tag gold">逾期预警</span></div>
+    <div class="txt" id="t5">今天催收驻马店批发客户，客户已经失联两周，电话不接，还欠着上次货款八万五，逾期45天，说下个月再结。客户说最近生意不好做，考虑转让店面。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑥ 售后回访 · 闭环恢复合作</h3><button class="btn" data-copy="t6">复制文本</button></div>
+    <div class="tags"><span class="tag green">售后回访</span><span class="tag green">复购信号</span></div>
+    <div class="txt" id="t6">今天回访周口团餐客户确认上次投诉处理结果。客户说赔付和整改都到位了，服务态度满意，愿意恢复合作，约定下周送一批分割品试用。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑦ 滞销品承接 · 地图标注</h3><button class="btn" data-copy="t7">复制文本</button></div>
+    <div class="tags"><span class="tag blue">找客户</span><span class="tag blue">滞销承接</span><span class="tag blue">地图标注</span></div>
+    <div class="txt" id="t7">今天拜访开封农贸档口客户，客户做白条批发，日销量大，周转快，能接受短周期促销，最关心价格和到货稳定。客户目前没有固定供应商，正在多家比价。</div>
+    <div class="note">配合找客户"滞销品承接"填 <b>白条B规格</b>，可在河南地图上看到紫色"滞销承接"标记。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑧ 地图区域识别</h3><button class="btn" data-copy="t8">复制文本</button></div>
+    <div class="tags"><span class="tag blue">区域识别</span><span class="tag blue">报价沟通</span></div>
+    <div class="txt" id="t8">今天拜访信阳批发客户，客户主营白条和分割品，配送半径50公里，希望找稳定的区域供应商。客户说新乡那边有同行报价更低，我们这边先看配送能不能覆盖。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑨ 综合大礼包（一次测多项）</h3><button class="btn" data-copy="t9">复制文本</button></div>
+    <div class="tags"><span class="tag green">老客复购</span><span class="tag green">成功沉淀</span><span class="tag gold">账期风险</span><span class="tag blue">竞品比价</span><span class="tag blue">相似案例</span></div>
+    <div class="txt" id="t9">今天回访南阳批发客户张老板，上次小批量试单的白条走货很好，损耗低，客户说想继续合作，本月加量到两吨。客户主要做商超和农贸档口，最关心配送时效和品质稳定。客户提到最近手头有点紧，上次那批货款还没结，还欠着我们三万五，说下个月再结。竞品温氏白条走18.6，给30天账期；新希望猪前腿给到20.4元。</div>
+    <div class="note">推荐第一个测这条：一次能看到 总结/画像/账期风控/比价/相似案例/话术/待办 全链路。</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>⑩ 多人对话（客户经理 + 客户 + 采购）</h3><button class="btn" data-copy="t10">复制文本</button></div>
+    <div class="tags"><span class="tag green">对话识别</span><span class="tag gold">账期+欠款</span><span class="tag blue">比价</span><span class="tag blue">质量反馈</span></div>
+    <div class="txt" id="t10">客户经理小王回访南阳批发客户张老板，店里采购小李也在场。<br/>小王：张老板，上次那批白条走货怎么样？<br/>张老板：走货还行，就是损耗比我想的高一点。<br/>小李：主要是最后那两天到货的，色泽有点暗，出成率低了些。<br/>张老板：小王你也别光听好话，上次说好的30天账期，怎么还没批下来？我们这边一直想续量，你这个月能不能把量加到两吨？<br/>小王：账期的事我回去再跟公司确认，您放心。不过咱们上次那三万五的货款还没结，张老板您看这周能不能先结一部分？<br/>张老板：最近手头确实紧，等月底客户回款了我就结，不骗你。<br/>小李：对了王哥，温氏那边白条报18.6，还给30天账期，你们牧原能不能也按这个价走？<br/>小王：价格我可以再谈，但我们的品质和到货稳定摆在这。您先按主销规格做个试单，我下周先把配送时效的对比数据给您送过来。<br/>张老板：行，那这个月先把量加到两吨，你尽快把报价单发我，账期的事一起落实。</div>
+    <div class="note">多人对话实测：DeepSeek 能正确区分"谁说的"，识别出 加量2吨 / 30天账期 / 3.5万欠款 / 温氏18.6 / 色泽出成率问题，并生成对应待办。</div>
+  </div>
+
+  <div class="card">
+    <h3>功能覆盖对照</h3>
+    <table>
+      <thead><tr><th>功能</th><th>用哪条测</th></tr></thead>
+      <tbody>
+        <tr><td>拜访总结 / 客户画像 / 待办</td><td>全部</td></tr>
+        <tr><td>账期风控（中/高/极高）</td><td>② ⑤ ⑨</td></tr>
+        <tr><td>竞品比价 + 综合价差</td><td>② ⑨</td></tr>
+        <tr><td>成功记忆自动沉淀</td><td>④ ⑨</td></tr>
+        <tr><td>相似成功案例（RAG）</td><td>① ④ ⑦ ⑨</td></tr>
+        <tr><td>找客户 + 地图</td><td>① ⑦ ⑧</td></tr>
+        <tr><td>滞销品承接（地图标注）</td><td>⑦</td></tr>
+        <tr><td>投诉 / 售后闭环</td><td>③ ⑥</td></tr>
+        <tr><td>催收待办（P0）</td><td>⑤</td></tr>
+        <tr><td>Agent 真实模型（后端在线）</td><td>全部</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  document.querySelectorAll("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const el = document.getElementById(btn.dataset.copy);
+      try {
+        await navigator.clipboard.writeText(el.innerText.trim());
+        btn.textContent = "已复制 ✓";
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = "复制文本"; btn.classList.remove("copied"); }, 1500);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+  });
+</script>
+</body>
+</html>
