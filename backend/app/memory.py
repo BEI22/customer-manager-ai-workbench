@@ -37,11 +37,23 @@ def add_case(case: dict) -> None:
 
 
 def case_text(c: dict) -> str:
+    # ⚠️ 用 `or []` 而不是 `.get("actions", [])`：
+    # `.get` 的默认值只在**键不存在**时生效；数据里存在 `"actions": null` 的记录
+    # （SC-f44005b787），此时返回 None，`for a in None` 会抛 TypeError，
+    # 而调用它的 search_similar 是在 SSE 生成器里跑的 —— 一崩整条对话流就断。
+    actions = c.get("actions") or []
+    if not isinstance(actions, (list, tuple)):
+        actions = [actions] if actions else []
+    action_text = " ".join(
+        a if isinstance(a, str) else (a or {}).get("title", "")
+        for a in actions
+        if isinstance(a, (str, dict))
+    )
     parts = [
         c.get("customerName", ""), c.get("type", ""), c.get("product", ""),
         c.get("concern", ""), c.get("breakthrough", ""), c.get("result", ""),
         c.get("process", ""), c.get("purpose", ""),
-        " ".join(a if isinstance(a, str) else a.get("title", "") for a in c.get("actions", [])),
+        action_text,
     ]
     return " ".join(p for p in parts if p)
 

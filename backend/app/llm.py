@@ -11,7 +11,7 @@ import os
 from langchain_openai import ChatOpenAI
 
 DEFAULT_BASE = "https://api.deepseek.com"
-DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_MODEL = "deepseek-v4-flash"
 
 
 def available() -> bool:

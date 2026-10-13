@@ -299,8 +299,13 @@ def synthesize_node(state: AgentState) -> dict:
         msgs = state["messages"] + [HumanMessage(content=SYNTH_PROMPT)]
         resp = model.invoke(msgs)
         content = resp.content or ""
-        report = json.loads(content)
-        return {"report": normalize_report(report)}
+        report = normalize_report(json.loads(content))
+        # 风控结论以确定性规则引擎为唯一事实来源：LLM 只负责自然语言表达，不允许改写分数/等级
+        deterministic_risk = _tool_result(
+            state.get("tool_results") or {}, "assess_credit_risk", "assess_credit_risk_tool"
+        ) or tools.assess_credit_risk(state["text"])
+        report["creditRisk"] = deterministic_risk
+        return {"report": report}
     except Exception:  # noqa: BLE001
         report = mock_report(state["text"], state.get("facts") or extract_facts(state["text"]), state.get("tool_results") or {})
         report["mode"] = "rule"

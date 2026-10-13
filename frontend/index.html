@@ -1999,6 +1999,7 @@
     .push-help ol { margin: 6px 0 0; padding-left: 18px; }
 
 
+    .result-block.audit-block { border-left-color: var(--red); background: rgba(208, 71, 67, .05); }
     .agent-log {
       background: #0b1f16;
       color: #d8f3e2;
@@ -2080,6 +2081,55 @@
 
     .brand-icon { width: 28px; height: 28px; stroke-width: 2; color: var(--primary); }
     .hero-logo .brand-icon { width: 34px; height: 34px; }
+
+    /* ===== 话术演练室（多轮对话陪练） ===== */
+    .coach-layout { display: grid; grid-template-columns: 330px 1fr; gap: 16px; align-items: start; }
+    @media (max-width: 1080px) { .coach-layout { grid-template-columns: 1fr; } }
+    .coach-setup-note { font-size: 12px; color: var(--muted); line-height: 1.7; margin-top: 8px; }
+    .coach-case { margin-top: 10px; border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 12px; background: var(--surface-2); font-size: 12.5px; }
+    .coach-case b { font-size: 13px; }
+    .coach-case .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .coach-case .row .kv { font-size: 11.5px; background: var(--glass-strong); border: 1px solid var(--line-2); padding: 2px 8px; border-radius: 10px; }
+    .mood-box { margin-top: 10px; }
+    .mood-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .moodbar { height: 8px; background: var(--line-2); border-radius: 6px; overflow: hidden; }
+    .moodbar > i { display: block; height: 100%; width: 0; border-radius: 6px; background: linear-gradient(90deg, var(--red), var(--gold), var(--green)); transition: width .45s ease; }
+    .chat-scroll { height: 500px; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 12px; }
+    .msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; box-shadow: var(--shadow-soft); }
+    .msg .who { display: block; font-size: 11px; font-weight: 600; margin-bottom: 2px; opacity: .75; }
+    .msg.client { align-self: flex-start; background: var(--glass-strong); border: 1px solid var(--line-2); border-top-left-radius: 4px; }
+    .msg.me { align-self: flex-end; background: var(--primary-2); border: 1px solid var(--line-2); border-top-right-radius: 4px; }
+    .msg.coach { align-self: center; max-width: 94%; background: var(--gold-2); border: 1px dashed var(--gold); border-radius: 10px; font-size: 12.5px; }
+    .msg.sys { align-self: center; background: transparent; color: var(--muted); font-size: 12px; box-shadow: none; }
+    .coach-input-row { display: flex; gap: 8px; margin-top: 10px; align-items: stretch; }
+    .coach-input-row textarea { flex: 1; min-height: 44px; max-height: 110px; resize: vertical; }
+    .coach-input-row button { white-space: nowrap; }
+    .coach-hint { margin-top: 10px; border-left: 3px solid var(--primary); background: var(--primary-2); border-radius: 0 8px 8px 0; padding: 8px 12px; font-size: 12.5px; line-height: 1.7; white-space: pre-wrap; }
+    .coach-hint b { display: block; margin-bottom: 2px; }
+    .coach-status { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .coach-action-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .coach-action-row button { flex: 1; min-width: 130px; white-space: nowrap; }
+    .coach-hist { margin-top: 12px; border-top: 1px dashed var(--line-2); padding-top: 10px; }
+    .coach-hist-item { display: flex; align-items: center; gap: 8px; padding: 7px 4px; border-bottom: 1px solid var(--line-2); font-size: 12.5px; }
+    .coach-hist-item .h-main { flex: 1; min-width: 0; }
+    .coach-hist-item b { display: block; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .coach-hist-item .h-sub { color: var(--muted); font-size: 11.5px; }
+    .coach-hist-item button { font-size: 11.5px; padding: 3px 8px; }
+    .coach-harvest { border: 1px solid var(--green-2); background: var(--green-2); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+    .coach-harvest h4 { margin: 0 0 2px; font-size: 13px; }
+    .coach-harvest .sub { font-size: 11.5px; color: var(--muted); }
+    /* ===== 客户台账管理 ===== */
+    .ledger-tip { font-size: 12.5px; color: var(--muted); line-height: 1.7; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; }
+    .ledger-file-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .ledger-preview { margin-top: 10px; }
+    .ledger-preview .mini-stat { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .ledger-preview .mini-stat b { color: var(--text); }
+    .harvest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; margin-top: 8px; }
+    @media (max-width: 560px) { .harvest-grid { grid-template-columns: 1fr; } }
+    .harvest-grid label { margin: 0; font-size: 12px; }
+    .harvest-grid .full { grid-column: 1 / -1; }
+    .harvest-grid textarea { min-height: 52px; }
+    .harvest-preview { margin-top: 8px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 10px; font-size: 12px; line-height: 1.7; max-height: 170px; overflow: auto; white-space: pre-wrap; color: var(--muted); }
   </style>
 </head>
 <body class="locked">
@@ -2144,6 +2194,7 @@
         <button data-tab="summary"><i data-lucide="file-audio"></i>拜访助手</button>
         <button class="nav-sub" data-tab="visitHistory"><i data-lucide="history"></i>拜访历史记录</button>
         <button class="nav-sub" data-tab="memory"><i data-lucide="brain-circuit"></i>成功记忆库</button>
+        <button class="nav-sub" data-tab="coach"><i data-lucide="message-circle"></i>话术演练</button>
         <button data-tab="match"><i data-lucide="scan-search"></i>找客户</button>
         <button data-tab="analysis"><i data-lucide="chart-no-axes-combined"></i>数据看板</button>
         <button data-tab="package"><i data-lucide="user-cog"></i>我的资料</button>
@@ -2174,8 +2225,8 @@
       </header>
 
       <section class="metric-row" aria-label="项目指标">
-        <div class="metric"><span><i data-lucide="mic"></i>拜访资料</span><strong>23</strong></div>
-        <div class="metric"><span><i data-lucide="users-round"></i>客户线索</span><strong>156</strong></div>
+        <div class="metric"><span><i data-lucide="mic"></i>拜访资料</span><strong id="metricVisits">23</strong></div>
+        <div class="metric"><span><i data-lucide="users-round"></i>客户线索</span><strong id="metricCustomers">156</strong></div>
         <div class="metric"><span><i data-lucide="package-check"></i>机会产品</span><strong>8</strong></div>
         <div class="metric"><span><i data-lucide="shield-check"></i>待确认项</span><strong>12</strong></div>
       </section>
@@ -2360,8 +2411,84 @@
             <div class="panel-head">
               <h3 class="panel-title"><i data-lucide="file-text"></i>拜访结果</h3>
               <span class="tag green">总结+待办+画像</span>
+              <button class="secondary practice-now" id="summaryPracticeBtn" type="button" title="把当前拜访资料送入话术演练室，先练两嘴再去见客户">🎭 演练该客户</button>
             </div>
             <div class="panel-body output" id="summaryOutput"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="module" id="coach">
+        <div class="coach-layout">
+          <div class="panel">
+            <div class="panel-head">
+              <h3 class="panel-title"><i data-lucide="message-circle"></i>演练设置</h3>
+              <span class="tag cyan" id="coachModeTag">后端未连接</span>
+            </div>
+            <div class="panel-body">
+              <label>想练的客户 / 场景
+                <textarea id="coachScenario" placeholder="描述你要拜访的客户：类型、产品、顾虑、当前情况… 系统会从成功案例库自动找最像的客户来演。">回访批发客户张老板，白条走货好想加量到两吨，但上次三万五货款还没结，竞品报价更低，担心品质稳定。</textarea>
+              </label>
+              <label>难度
+                <select id="coachDifficulty">
+                  <option>新手</option>
+                  <option selected>实战</option>
+                  <option>地狱</option>
+                </select>
+              </label>
+              <div class="button-row">
+                <button class="primary" id="coachStartBtn" type="button"><i data-lucide="sparkles"></i>开始演练</button>
+                <button class="secondary" id="coachResetBtn" type="button"><i data-lucide="rotate-ccw"></i>重新演练</button>
+              </div>
+              <div class="coach-setup-note">🎭 AI 会从<b>成功案例库</b>检索与你描述最像的客户，按他的画像、顾虑和真实说话习惯跟你多轮过招；你卡壳就点「要提示」，结束前可参考右侧教练点评复盘。</div>
+              <div id="coachCaseCard"></div>
+              <div class="mood-box" id="coachMoodBox" style="display:none">
+                <div class="mood-head"><span>客户态度（好感度）</span><span id="coachMoodText">0 / 72</span></div>
+                <div class="moodbar"><i id="coachMoodBar"></i></div>
+              </div>
+              <div class="coach-hist">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><b style="font-size:12.5px">📚 演练记录（本机）</b><button class="secondary" id="coachHistoryClear" type="button" style="font-size:11.5px;padding:2px 8px">清空</button></div>
+                <div id="coachHistoryList"><div class="coach-setup-note" style="margin:0">暂无记录。每场演练可点右下「保存本场记录」留存回放。</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3 class="panel-title"><i data-lucide="message-square-text"></i>实战对话</h3>
+              <div class="coach-status"><span class="tag green" id="coachStageTag">未开始</span><span class="tag blue" id="coachRoundTag"></span></div>
+            </div>
+            <div class="panel-body">
+              <div class="chat-scroll" id="coachChat">
+                <div class="msg sys">👋 选好场景和难度，点「开始演练」，AI 客户会先开口。</div>
+              </div>
+              <div class="coach-input-row">
+                <textarea id="coachInput" placeholder="输入你对客户说的话…（Enter 发送，Shift+Enter 换行）" disabled></textarea>
+                <button class="primary" id="coachSendBtn" type="button" disabled>发送</button>
+                <button class="secondary" id="coachHintBtn" type="button" disabled>💡 要提示</button>
+              </div>
+              <div class="coach-hint" id="coachHintBox" style="display:none"><span id="coachHintText"></span></div>
+              <div class="coach-action-row">
+                <button class="primary" id="coachHarvestBtn" type="button" disabled title="谈成后把本场沉淀成成功案例，下次检索可复用">📥 谈成·沉淀为案例</button>
+                <button class="secondary" id="coachSaveBtn" type="button" disabled title="把本场对话存到本机演练记录，可随时回放">💾 保存本场记录</button>
+              </div>
+              <div class="coach-harvest" id="coachHarvestBox" style="display:none">
+                <h4>📥 沉淀为成功案例</h4>
+                <div class="sub">确认后写入成功记忆库，下次遇到相似客户会自动检索到它。带 <b>*</b> 可改。</div>
+                <div class="harvest-grid">
+                  <label>客户名称（演练）<input id="hvCustomerName" /></label>
+                  <label>客户类型<input id="hvType" /></label>
+                  <label>主营品类<input id="hvProduct" /></label>
+                  <label>关注点<input id="hvConcern" /></label>
+                  <label class="full">有效打法 / 突破点（参考话术也会随案例保存）<textarea id="hvBreakthrough"></textarea></label>
+                </div>
+                <div class="harvest-preview" id="hvProcess"></div>
+                <div class="button-row">
+                  <button class="primary" id="coachHarvestSubmit" type="button">确认沉淀</button>
+                  <button class="secondary" id="coachHarvestCancel" type="button">取消</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2683,6 +2810,28 @@
               </div>
             </div>
           </div>
+          <div class="panel" style="grid-column:1/-1">
+            <div class="panel-head">
+              <h3 class="panel-title">📊 客户台账（真实数据源）</h3>
+              <span class="tag blue" id="ledgerStatusTag">检测中…</span>
+            </div>
+            <div class="panel-body">
+              <div class="ledger-tip">把公司客户台账（.xlsx / .csv，表头：客户名称 / 区域 / 客户类型 / 主营品类 / 关注点 / 付款方式 / 账期天数 / 月采购量 / 开发状态 / 备注）导入后，<b>首页指标、地图热力、机会推荐会切换为真实数据</b>；不导入时保持内置演示数据。导入后可随时清空回到演示模式。</div>
+              <div class="button-row">
+                <button class="secondary" id="ledgerTemplateBtn" type="button">⬇️ 下载模板</button>
+                <button class="secondary" id="ledgerPickBtn" type="button">📂 选择文件…</button>
+                <input id="ledgerFileInput" type="file" accept=".xlsx,.csv" style="display:none" />
+                <select id="ledgerMode">
+                  <option value="replace">替换现有数据</option>
+                  <option value="append">追加（去重）</option>
+                </select>
+                <button class="primary" id="ledgerImportBtn" type="button" disabled>导入台账</button>
+                <button class="secondary" id="ledgerClearBtn" type="button">清空（回演示）</button>
+              </div>
+              <div id="ledgerFileLabel" class="ledger-file-label">未选择文件</div>
+              <div id="ledgerPreview"></div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -2710,6 +2859,7 @@
       analysis: ["数据看板", "跨拜访复盘：风险、待办与竞品监控。"],
       match: ["找客户", "按客户画像、成功记忆和地图热力生成开发方案。"],
       memory: ["成功记忆库", "已开发客户的成功案例库，按画像检索复用开发思路和话术。"],
+      coach: ["话术演练", "AI 扮演最难搞的相似客户，陪你把话术练到开口就来（基于成功案例）。"],
       map: ["地图拓客热力图", "按区域查看已开发、未开发、空白市场和高潜客户。"],
       slow: ["机会推荐", "把滞销品、竞品价差和订单机会合并成销售动作。"],
       library: ["知识库", "沉淀提示词、模板、画像字段和业务规则。"],
@@ -2738,7 +2888,7 @@
       { id: "S-003", type: "商超", product: "鲜品", path: "客户担心临期和售后，先以促销档期小批量验证。", breakthrough: "售后响应", talk: "我们先按促销周期做试销，临期和售后处理口径提前确认。", result: "形成节假日促销合作" }
     ];
 
-    const mapZones = [
+    let mapZones = [
       { name: "郑州市", developed: 46, undeveloped: 58, blank: 8, potential: 91, route: "围绕批发市场、餐饮连锁和商超做重点突破" },
       { name: "洛阳市", developed: 32, undeveloped: 44, blank: 12, potential: 84, route: "优先开发餐饮和团餐客户，补充分割品机会" },
       { name: "开封市", developed: 21, undeveloped: 36, blank: 14, potential: 78, route: "结合农贸档口和短周期促销做试单" },
@@ -3109,7 +3259,7 @@
 
     function inferTermDays(text) {
       const source = String(text || "");
-      const match = source.match(/(?:账期|月结|结款|付款|回款)[^\n\r]{0,10}(\d{1,3})\s*天/) || source.match(/(\d{1,3})\s*天\s*(?:账期|结|付款|回款)/);
+      const match = source.match(/(?:账期|月结|结款|付款|回款)[^\d\n\r]{0,10}(\d{1,3})\s*天/) || source.match(/(\d{1,3})\s*天\s*(?:账期|结|付款|回款)/);
       if (match) return Math.min(180, parseInt(match[1], 10));
       if (/一个月(?:账期|结)?|月结/.test(source)) return 30;
       if (/一个季度|季度结/.test(source)) return 90;
@@ -3124,10 +3274,15 @@
       return match[2] ? value + "万" : value + "元";
     }
 
+    function stripNegation(text) {
+      // 去掉“没有逾期 / 无欠款”等否定表达，避免误判为风险信号
+      return String(text || "").replace(/(没有|没|无|未|不存在)\s*(逾期|欠款|拖欠|超期|违约|资金紧张)/g, "");
+    }
+
     function inferOverdue(text) {
-      const source = String(text || "");
-      const amountMatch = source.match(/(?:欠|逾期|没结|没回款|货款)[^\n\r]{0,8}(\d+(?:\.\d+)?)\s*(万|元)?/);
-      const daysMatch = source.match(/逾期[^\n\r]{0,6}(\d{1,3})\s*天/);
+      const source = stripNegation(text);
+      const amountMatch = source.match(/(?:欠|逾期|没结|没回款|货款)[^\d\n\r]{0,8}(\d+(?:\.\d+)?)\s*(万|元)?/);
+      const daysMatch = source.match(/逾期[^\d\n\r]{0,6}(\d{1,3})\s*天/);
       return {
         flagged: /欠款|欠着|逾期|没结|没回款|货款还没|上次.*没结|催/.test(source),
         amount: amountMatch ? (amountMatch[2] === "万" ? amountMatch[1] + "万" : amountMatch[1] + "元") : null,
@@ -3135,15 +3290,16 @@
       };
     }
 
+    // 注意：后端 Python 规则引擎为唯一事实来源；此本地实现仅在后端未连接时兜底，词表需保持一致
     function creditRiskFactors(text) {
-      const source = String(text || "");
+      const source = stripNegation(text);
       const factors = [];
-      if (/逾期|欠款|欠着|没结|没回款|货款还没|拖/.test(source)) factors.push("历史欠款或逾期");
-      if (/手头紧|资金紧张|周转不开|资金紧|最近紧张|先欠着|等回款|下个月再结|宽限/.test(source)) factors.push("资金紧张信号");
-      if (/(?:账期|结款)[^\n\r]{0,8}(?:延长|多给|放宽|加长)|要.*月结|给.*账期/.test(source)) factors.push("账期延长诉求");
-      if (/联系不上|不接电话|失联|找不到人|关机/.test(source)) factors.push("失联或催收困难");
-      if (/生意不好|不好做|关店|转让|亏钱|经营困难|歇业/.test(source)) factors.push("经营恶化信号");
-      if (/超授信|超出额度|授信不够|超过额度/.test(source)) factors.push("接近或超过授信额度");
+      if (/逾期|超期|欠款|欠着|没结|没回款|货款还没|货款一直|还没给|没付|拖着|压着货款/.test(source)) factors.push("历史欠款或逾期");
+      if (/手头紧|资金紧张|资金紧|现金紧|现金流|周转不开|周转困难|账上没钱|最近紧张|先欠着|等回款|下个月再结|宽限/.test(source)) factors.push("资金紧张信号");
+      if (/(?:账期|结款)[^\n\r]{0,8}(?:延长|多给|放宽|加长|缓)|缓一缓|缓几天|再给几天|延后|要.*月结|给.*账期/.test(source)) factors.push("账期延长诉求");
+      if (/联系不上|联系不到|电话打不通|不接电话|微信不回|失联|找不到人|关机|躲着/.test(source)) factors.push("失联或催收困难");
+      if (/生意不好|生意差|不好做|要关门|关门|关店|转让|转出去|亏钱|亏本|经营困难|歇业/.test(source)) factors.push("经营恶化信号");
+      if (/超授信|超出额度|超额度|额度用完|授信不够|超过额度/.test(source)) factors.push("接近或超过授信额度");
       if (/退换|退货增多|客诉|投诉/.test(source) && /货款|结款|账期|欠/.test(source)) factors.push("售后纠纷叠加付款问题");
       return [...new Set(factors)];
     }
@@ -3163,21 +3319,86 @@
       });
       if (overdue.days !== null) score += Math.min(15, Math.round(overdue.days / 2));
       if (pay === "账期" || pay === "月结") score += 6;
-      const oneClick = /失联|找不到人|明确不还|就是不给|赖账|关店|转让/.test(String(text || ""));
+      const termDays = inferTermDays(text);
+      const insufficientInfo = factors.length === 0 && pay === "待确认" && termDays === null && overdue.days === null;
+      const oneClick = /失联|找不到人|明确不还|就是不给|赖账|关店|要关门|转让|转出去/.test(stripNegation(text));
       const riskScore = Math.min(100, Math.round(score));
-      const level = oneClick || riskScore >= 81 ? "极高" : riskScore >= 61 ? "高" : riskScore >= 31 ? "中" : "低";
+      const level = insufficientInfo ? "低" : (oneClick || riskScore >= 81 ? "极高" : riskScore >= 61 ? "高" : riskScore >= 31 ? "中" : "低");
       const color = level === "极高" ? "red" : level === "高" ? "orange" : level === "中" ? "gold" : "green";
       const action = level === "极高" || level === "高"
         ? ["暂停新增赊销额度", "改为现款或短账期（7 天内）", "本周确认回款计划并上报主管"]
         : level === "中"
           ? ["控制账期天数，不超授信", "先确认回款计划再继续发货", "每笔对账留书面确认"]
           : ["按正常账期执行", "保持对账和回款记录"];
-      return { score: riskScore, level, color, factors, action, payMethod: pay, termDays: overdue.days };
+      return {
+        score: riskScore, level, color, factors, action, payMethod: pay,
+        termDays: termDays, overdueDays: overdue.days,
+        insufficientInfo: insufficientInfo,
+        note: insufficientInfo ? "信息不足：未识别到付款方式 / 账期 / 欠款信息，建议补充后再定级" : ""
+      };
     }
 
     function creditRiskTag(risk) {
-      if (!risk || !risk.level || risk.level === "低") return `<span class="tag green">低风险</span>`;
+      if (!risk || !risk.level) return `<span class="tag">待确认</span>`;
+      if (risk.insufficientInfo) return `<span class="tag gold">待确认（信息不足）</span>`;
+      if (risk.level === "低") return `<span class="tag green">低风险 ${risk.score}分</span>`;
       return `<span class="tag ${risk.color || "gold"}">${risk.level}风险 ${risk.score}分</span>`;
+    }
+
+    // ===== 人工审核闭环（高/极高风险必须人工确认，Agent 只给建议） =====
+    const AUDIT_KEY = "audit_records";
+    function auditRecordKey(customer, risk) {
+      return `${customer || "未知客户"}｜${(risk && risk.level) || ""}｜${new Date().toISOString().slice(0, 10)}`;
+    }
+    function loadAuditRecords() {
+      try { return JSON.parse(localStorage.getItem(AUDIT_KEY) || "{}"); } catch { return {}; }
+    }
+    function saveAuditRecord(key, rec) {
+      const all = loadAuditRecords();
+      all[key] = rec;
+      localStorage.setItem(AUDIT_KEY, JSON.stringify(all));
+    }
+    const AUDIT_LABELS = { confirm: "已确认建议", modify: "修改后执行", reject: "已驳回" };
+    function renderAuditBlock(customer, risk) {
+      if (!risk || (risk.level !== "高" && risk.level !== "极高")) return "";
+      const key = auditRecordKey(customer, risk);
+      const rec = loadAuditRecords()[key];
+      const status = rec
+        ? `<p class="audit-status" style="color:var(--muted)">审核结果：<b>${safeText(AUDIT_LABELS[rec.decision] || rec.decision)}</b>｜意见：${safeText(rec.note || "无")}｜${safeText(rec.time || "")}</p>`
+        : `<p class="audit-status" style="color:var(--red)">该客户为${safeText(risk.level)}风险：Agent 只给建议，必须人工审核后才能执行管控动作。</p>`;
+      return block("人工审核（高风险必填）", "user-check", `<p>风险等级：${creditRiskTag(risk)}｜建议动作：${(risk.action || []).map(safeText).join("；")}</p>${status}
+        <label>审核意见<textarea class="compact-textarea" id="auditNote" data-audit-key="${safeText(key)}" placeholder="例如：同意暂停赊销 / 建议改为现款 / 需补充回款凭证后再放量"></textarea></label>
+        <div class="button-row">
+          <button class="primary" type="button" data-audit="confirm">确认建议</button>
+          <button class="secondary" type="button" data-audit="modify">修改后执行</button>
+          <button class="secondary" type="button" data-audit="reject">驳回</button>
+        </div>`, "audit-block");
+    }
+    async function submitAuditDecision(decision) {
+      const noteEl = $("auditNote");
+      if (!noteEl) return;
+      const key = noteEl.dataset.auditKey || "未知";
+      const rec = {
+        key, decision,
+        note: noteEl.value.trim(),
+        time: new Date().toLocaleString("zh-CN"),
+        reviewer: currentRoleName()
+      };
+      saveAuditRecord(key, rec);
+      try {
+        const parts = key.split("｜");
+        await fetch(agentApiBase() + "/api/audit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ caseId: key, customer: parts[0] || "", riskLevel: parts[1] || "", decision, note: rec.note, reviewer: rec.reviewer })
+        });
+      } catch {}
+      const card = noteEl.closest(".result-block");
+      if (card) {
+        const p = card.querySelector(".audit-status");
+        if (p) p.outerHTML = `<p class="audit-status" style="color:var(--muted)">审核结果：<b>${safeText(AUDIT_LABELS[decision] || decision)}</b>｜意见：${safeText(rec.note || "无")}｜${safeText(rec.time)}</p>`;
+      }
+      showToast("审核已记录：" + (AUDIT_LABELS[decision] || decision));
     }
 
     function capitalCost(price, days, rate) {
@@ -3436,9 +3657,183 @@
     function memoryLibraryHtml(filterText = "") {
       let cases = loadSuccessCases();
       if (filterText) cases = cases.filter(c => successCaseText(c).includes(String(filterText)));
-      const rows = cases.slice(0, 10).map(c => `<tr><td>${safeText(c.customerName)}</td><td>${safeText(c.type || "待确认")}｜${safeText(c.product || "待确认")}｜${safeText(c.concern || "待确认")}</td><td>${safeText(c.breakthrough || "待确认")}</td><td>${safeText(c.result || "待确认")}</td><td>${safeText(c.source || "手动录入")}</td><td><button class="secondary memory-delete" type="button" data-case-id="${safeText(c.id)}">删除</button></td></tr>`).join("");
+      const rows = cases.slice(0, 10).map(c => `<tr><td>${safeText(c.customerName)}</td><td>${safeText(c.type || "待确认")}｜${safeText(c.product || "待确认")}｜${safeText(c.concern || "待确认")}</td><td>${safeText(c.breakthrough || "待确认")}</td><td>${safeText(c.result || "待确认")}</td><td>${safeText(c.source || "手动录入")}</td><td><div class="row" style="gap:4px;margin:0"><button class="secondary memory-practice" type="button" data-case-id="${safeText(c.id)}">🎭 演练TA</button><button class="secondary memory-delete" type="button" data-case-id="${safeText(c.id)}">删除</button></div></td></tr>`).join("");
       return block("成功记忆库（已沉淀案例）", "database", `<p>共 ${cases.length} 条。来源：拜访助手自动沉淀 + 手动录入。正式版将把每条案例向量化后存入向量数据库，用余弦相似度检索。</p>` + (cases.length ? `<div class="table-wrap"><table><thead><tr><th>客户</th><th>画像与品类</th><th>突破打法</th><th>结果</th><th>来源</th><th>操作</th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p>暂无沉淀案例。拜访老客户时出现试单、复购、加量等信号会自动沉淀，也可手动录入。</p>`));
     }
+    // ===== 真实数据层：客户台账 + 拜访记录上移后端（P0） =====
+    let REAL_CUSTOMERS = null;                       // null=演示模式；数组=后端真实台账
+    let DEMO_MAP_ZONES = mapZones.map(z => ({ ...z }));
+
+    function realCustomersActive() { return Array.isArray(REAL_CUSTOMERS) && REAL_CUSTOMERS.length > 0; }
+    function customerPool() { return REAL_CUSTOMERS || customers; }
+
+    async function refreshCustomerPool() {
+      try {
+        const resp = await fetch(agentApiBase() + "/api/customers", { signal: AbortSignal.timeout(2500) });
+        if (!resp.ok) throw new Error("http");
+        const json = await resp.json();
+        REAL_CUSTOMERS = (json && json.count > 0) ? json.customers : null;
+      } catch {
+        REAL_CUSTOMERS = null;
+      }
+      syncMapZones();
+      return REAL_CUSTOMERS;
+    }
+
+    function aggregatedZones() {
+      if (!realCustomersActive()) return null;
+      const by = {};
+      REAL_CUSTOMERS.forEach(c => {
+        const r = c.region || "区域待确认";
+        if (r === "区域待确认") return;
+        const st = by[r] || (by[r] = { developed: 0, developing: 0, undeveloped: 0, blank: 0 });
+        const group = c.status === "已开发" ? "developed" : c.status === "开发中" ? "developing" : c.status === "空白" ? "blank" : "undeveloped";
+        st[group] += 1;
+      });
+      return Object.keys(by).map(name => {
+        const st = by[name];
+        return {
+          name,
+          developed: st.developed + st.developing,
+          undeveloped: st.undeveloped,
+          blank: st.blank,
+          potential: st.developed + st.developing + st.undeveloped + st.blank,
+          route: "台账：已开发/开发中 " + (st.developed + st.developing) + " 家，未开发 " + st.undeveloped + " 家，空白 " + st.blank + " 家"
+        };
+      });
+    }
+
+    function syncMapZones() {
+      const agg = aggregatedZones();
+      mapZones = (agg && agg.length) ? agg : DEMO_MAP_ZONES.map(z => ({ ...z }));
+    }
+
+    async function refreshStats() {
+      try {
+        const resp = await fetch(agentApiBase() + "/api/stats", { signal: AbortSignal.timeout(2500) });
+        if (!resp.ok) throw new Error("http");
+        const s = await resp.json();
+        if (s.customer_mode === "real") {
+          if ($("metricCustomers")) $("metricCustomers").textContent = s.customers;
+          if ($("metricVisits")) $("metricVisits").textContent = Math.max(s.visits, usableVisitHistory().length);
+          const tag = $("ledgerStatusTag");
+          if (tag) { tag.textContent = "真实台账 " + s.customers + " 家"; tag.className = "tag green"; }
+        } else {
+          if ($("metricCustomers")) $("metricCustomers").textContent = "演示";
+          if ($("metricVisits")) $("metricVisits").textContent = usableVisitHistory().length || 0;
+          const tag = $("ledgerStatusTag");
+          if (tag) { tag.textContent = "演示数据（未导入台账）"; tag.className = "tag gold"; }
+        }
+        if ($("ledgerPreview")) renderLedgerPreview();
+      } catch {}
+    }
+
+    // 拜访记录：本地缓存 + 服务端备份（P0-2）
+    async function syncServerVisits() {
+      try {
+        const local = loadVisitHistory();
+        const resp = await fetch(agentApiBase() + "/api/visits", { signal: AbortSignal.timeout(2500) });
+        if (!resp.ok) throw new Error("http");
+        const json = await resp.json();
+        const server = (json && json.visits) || [];
+        if (local.length) {
+          // 无论服务端是否为空，把本地先合并上去（同 id 幂等覆盖），再拉全量
+          await fetch(agentApiBase() + "/api/visits/merge", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ records: local })
+          });
+        }
+        const resp2 = await fetch(agentApiBase() + "/api/visits", { signal: AbortSignal.timeout(2500) });
+        const json2 = await resp2.json();
+        if (json2 && Array.isArray(json2.visits) && json2.visits.length) saveVisitHistory(json2.visits);
+      } catch { /* 后端不可用时保持离线可用 */ }
+    }
+    function syncVisitRecordToServer(record) {
+      if (!record) return;
+      fetch(agentApiBase() + "/api/visits/merge", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ records: [record] })
+      }).catch(() => {});
+    }
+    function deleteVisitOnServer(id) {
+      if (!id || id === "待确认") return;
+      fetch(agentApiBase() + "/api/visits/" + encodeURIComponent(id), { method: "DELETE" }).catch(() => {});
+    }
+
+    // 客户台账 UI
+    function renderLedgerPreview() {
+      const box = $("ledgerPreview");
+      if (!box) return;
+      if (!realCustomersActive()) { box.innerHTML = ""; return; }
+      const byType = {};
+      REAL_CUSTOMERS.forEach(c => { const t = c.type || "其他"; byType[t] = (byType[t] || 0) + 1; });
+      const typeRows = Object.entries(byType).map(([t, n]) => `<tr><td>${safeText(t)}</td><td>${n} 家</td></tr>`).join("");
+      box.innerHTML =
+        `<div class="mini-stat"><span>共 <b>${REAL_CUSTOMERS.length}</b> 家</span><span>覆盖 <b>${new Set(REAL_CUSTOMERS.map(c => c.region)).size}</b> 个区域</span></div>` +
+        `<div class="table-wrap"><table><thead><tr><th>客户名称</th><th>区域</th><th>类型</th><th>主营品类</th><th>状态</th></tr></thead><tbody>` +
+        REAL_CUSTOMERS.slice(0, 12).map(c => `<tr><td>${safeText(c.name)}</td><td>${safeText(c.region)}</td><td>${safeText(c.type)}</td><td>${safeText((c.products || []).join("、") || "待确认")}</td><td>${safeText(c.status || "待确认")}</td></tr>`).join("") +
+        `</tbody></table></div>` +
+        (REAL_CUSTOMERS.length > 12 ? `<div style="font-size:12px;color:var(--muted)">… 还有 ${REAL_CUSTOMERS.length - 12} 家未列出，按类型分布：${typeRows.replace(/<\/?td>/g, "").replace(/<tr>/g, " ").replace(/<\/tr>/g, "；")}</div>` : typeRows ? `<div style="font-size:12px;color:var(--muted)">按类型：${typeRows.replace(/<\/?td>/g, "").replace(/<tr>/g, " ").replace(/<\/tr>/g, "；")}</div>` : "");
+    }
+    function ledgerTemplateDownload() {
+      const rows = [
+        "客户名称,区域,客户类型,主营品类,关注点,付款方式,账期天数,月采购量,开发状态,备注",
+        "李记鲜肉批发行,南阳市,批发商,白条,品质稳定,现款,0,30吨,已开发,试单复购中",
+        "豫香餐饮连锁,郑州市,餐饮连锁,分割品,出成率,月结,30,5吨,开发中,连锁快餐",
+        "惠民超市,洛阳市,商超,鲜品分割品,售后响应,账期,15,8吨,未开发,",
+        "老王农贸档口,周口市,农贸档口,五花肉,价格敏感,现款,0,2吨,空白,"
+      ];
+      const blob = new Blob(["\ufeff" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "客户台账模板.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    }
+    function ledgerOnFile() {
+      const f = $("ledgerFileInput").files[0];
+      if (!f) return;
+      $("ledgerFileLabel").textContent = "已选择：" + f.name + "（" + (f.size / 1024).toFixed(1) + " KB）";
+      $("ledgerImportBtn").disabled = false;
+    }
+    async function ledgerImport() {
+      const f = $("ledgerFileInput").files[0];
+      if (!f) return;
+      const btn = $("ledgerImportBtn");
+      btn.disabled = true;
+      const oldText = btn.textContent;
+      btn.textContent = "导入中…";
+      try {
+        const fd = new FormData();
+        fd.append("file", f);
+        fd.append("mode", $("ledgerMode").value);
+        const resp = await fetch(agentApiBase() + "/api/customers/import", { method: "POST", body: fd });
+        const j = await resp.json();
+        if (!j.ok) { showToast(j.message || "导入失败"); return; }
+        showToast(`✅ 导入成功：新增 ${j.imported} 家，重复跳过 ${j.skipped} 家，当前共 ${j.count} 家`);
+        await refreshCustomerPool();
+        refreshStats();
+        $("ledgerFileInput").value = "";
+        $("ledgerFileLabel").textContent = "未选择文件";
+      } catch (e) {
+        showToast("连接后端失败：" + e.message);
+      }
+      btn.disabled = false;
+      btn.textContent = oldText;
+    }
+    async function ledgerClear() {
+      if (!window.confirm("确认清空客户台账？首页和地图将回到演示数据。")) return;
+      try {
+        const resp = await fetch(agentApiBase() + "/api/customers", { method: "DELETE" });
+        await resp.json();
+        await refreshCustomerPool();
+        refreshStats();
+        showToast("台账已清空，已回到演示数据模式");
+      } catch (e) { showToast("连接后端失败：" + e.message); }
+    }
+
     // ===== Agent 后端合体（AI 引擎） =====
     const AGENT_API_KEY = "agent_api_base";
     function agentApiBase() {
@@ -3504,8 +3899,10 @@
         block("账期情报与信用风险", "shield-check", `<div class="mini-grid">
           <div class="mini-card"><span>${icon("wallet")}付款方式</span><strong>${safeText(cr.payMethod || "待确认")}</strong></div>
           <div class="mini-card"><span>${icon("calendar-clock")}账期天数</span><strong>${safeText(cr.termDays != null ? cr.termDays : "待确认")}</strong></div>
+          <div class="mini-card"><span>${icon("history")}逾期天数</span><strong>${safeText(cr.overdueDays != null ? cr.overdueDays : "无")}</strong></div>
           <div class="mini-card"><span>${icon("shield-alert")}拖欠风险</span><strong>${creditRiskTag(cr)}</strong></div>
-        </div><div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>触发因子</th><th>建议动作</th></tr></thead><tbody>${(cr.factors || []).length ? cr.factors.map(f => `<tr><td>${safeText(f)}</td><td>${crActions.map(safeText).join("；") || "待确认"}</td></tr>`).join("") : `<tr><td colspan="2">未检测到明显拖欠信号。</td></tr>`}</tbody></table></div>`) +
+        </div>${cr.insufficientInfo ? `<p style="color:var(--gold)">${safeText(cr.note || "信息不足，建议补充付款方式 / 账期 / 欠款信息后再定级")}</p>` : ""}<div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>触发因子</th><th>建议动作</th></tr></thead><tbody>${(cr.factors || []).length ? cr.factors.map(f => `<tr><td>${safeText(f)}</td><td>${crActions.map(safeText).join("；") || "待确认"}</td></tr>`).join("") : `<tr><td colspan="2">未检测到明显拖欠信号。</td></tr>`}</tbody></table></div>`) +
+        renderAuditBlock(($("customerName") && $("customerName").value) || "", cr) +
         block("竞品比价（含账期资金成本）", "scale", `<div class="table-wrap"><table><thead><tr><th>竞品</th><th>品项</th><th>公司报价</th><th>竞品报价</th><th>表面价差</th><th>账期条件</th><th>综合价差</th></tr></thead><tbody>${agentBenchmarkRows(bm)}</tbody></table></div>`) +
         block("相似成功客户参考（Agent 检索）", "scan-search", (sc.hits || []).length
           ? `<div class="table-wrap"><table><thead><tr><th>相似老客户</th><th>相似度</th><th>画像与品类</th><th>有效打法</th><th>结果</th><th>相似点</th></tr></thead><tbody>${sc.hits.map(h => `<tr><td>${safeText(h.customerName)}</td><td>${h.score}<div class="score"><i style="--w:${h.score}%"></i></div></td><td>${safeText(h.type || "")}｜${safeText(h.product || "")}｜${safeText(h.concern || "")}</td><td>${safeText(h.breakthrough || "")}</td><td>${safeText(h.result || "")}</td><td>${safeText((h.similar || []).join("、") || "-")}</td></tr>`).join("")}</tbody></table></div>`
@@ -3614,7 +4011,7 @@
         }
       } catch {}
       if (filterText) cases = cases.filter(c => successCaseText(c).includes(String(filterText)));
-      const rows = cases.slice(0, 10).map(c => `<tr><td>${safeText(c.customerName)}</td><td>${safeText(c.type || "待确认")}｜${safeText(c.product || "待确认")}｜${safeText(c.concern || "待确认")}</td><td>${safeText(c.breakthrough || "待确认")}</td><td>${safeText(c.result || "待确认")}</td><td>${safeText(c.source || "手动录入")}</td><td><button class="secondary memory-delete" type="button" data-case-id="${safeText(c.id)}">删除</button></td></tr>`).join("");
+      const rows = cases.slice(0, 10).map(c => `<tr><td>${safeText(c.customerName)}</td><td>${safeText(c.type || "待确认")}｜${safeText(c.product || "待确认")}｜${safeText(c.concern || "待确认")}</td><td>${safeText(c.breakthrough || "待确认")}</td><td>${safeText(c.result || "待确认")}</td><td>${safeText(c.source || "手动录入")}</td><td><div class="row" style="gap:4px;margin:0"><button class="secondary memory-practice" type="button" data-case-id="${safeText(c.id)}">🎭 演练TA</button><button class="secondary memory-delete" type="button" data-case-id="${safeText(c.id)}">删除</button></div></td></tr>`).join("");
       outEl.innerHTML = block("成功记忆库（已沉淀案例）", "database", `<p>共 ${cases.length} 条。来源：拜访助手自动沉淀 + 手动录入。正式版将把每条案例向量化后存入向量数据库，用余弦相似度检索。</p>` + (cases.length ? `<div class="table-wrap"><table><thead><tr><th>客户</th><th>画像与品类</th><th>突破打法</th><th>结果</th><th>来源</th><th>操作</th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p>暂无沉淀案例。拜访老客户时出现试单、复购、加量等信号会自动沉淀，也可手动录入。</p>`));
       renderIcons();
     }
@@ -3708,6 +4105,16 @@
       return NaN;
     }
 
+    // 「待确认」是抽取失败的占位符，不是真品项 —— 不能拿它做比价匹配。
+    const UNKNOWN_PRODUCT = "待确认";
+    // 紧跟数字的这些后缀说明它**不是**价格：天数 / 折扣点数 / 计量单位 / 日期。
+    // 「账期还想压到45天」「竞品低3个点」「20号拜访」都不是报价。
+    const NON_PRICE_TAIL = /^\s*(?:天|个月|月|年|周|个点|点|折|%|％|次|吨|箱|件|提|人|公里|号|日|kg|公斤|斤)/;
+
+    function isNonPriceOccurrence(text, endIndex) {
+      return NON_PRICE_TAIL.test(text.slice(endIndex, endIndex + 4));
+    }
+
     function extractPriceCandidates(line) {
       const text = normalizeDigits(line);
       const candidates = [];
@@ -3726,6 +4133,9 @@
         }
       });
       for (const match of text.matchAll(/(?:报价|价格|价|报|走|给到|拿货|市场|行情|到)\D{0,18}(\d{1,2}(?:\.\d{1,2})?|\d{1,2}(?:块(?:钱)?|元)[0-9一二两三四五六七八九]?|[一二两三四五六七八九十]{1,3}(?:点[一二两三四五六七八九\d]|(?:块(?:钱)?|元)[一二两三四五六七八九]?))/g)) {
+        // ⚠️ 「压到45天」里那个「到45」也能被这条模式匹配到，但后面跟着「天」，
+        //    是账期不是价格 —— 必须按后缀排除，否则账期天数会进比价表。
+        if (isNonPriceOccurrence(text, (match.index || 0) + match[0].length)) continue;
         const price = priceTextToNumber(match[1]);
         if (Number.isFinite(price) && price >= 5 && price <= 60) {
           candidates.push({ price, index: (match.index || 0) + match[0].lastIndexOf(match[1]), literal: match[1] });
@@ -3738,15 +4148,43 @@
           const slice = text.slice(start, start + 54);
           const priceMatch = slice.match(/(\d{1,2}(?:\.\d{1,2})?|\d{1,2}(?:块(?:钱)?|元)[0-9一二两三四五六七八九]?|[一二两三四五六七八九十]{1,3}(?:点[一二两三四五六七八九\d]|(?:块(?:钱)?|元)[一二两三四五六七八九]?))/);
           if (!priceMatch) continue;
+          const at = slice.indexOf(priceMatch[1]);
+          if (isNonPriceOccurrence(slice, at + priceMatch[1].length)) continue;
           const price = priceTextToNumber(priceMatch[1]);
           if (Number.isFinite(price) && price >= 5 && price <= 60) {
-            candidates.push({ price, index: start + slice.indexOf(priceMatch[1]), literal: priceMatch[1] });
+            candidates.push({ price, index: start + at, literal: priceMatch[1] });
           }
         }
       });
       return candidates.filter(item => !/[一二两三四五六七八九十]/.test(text[item.index - 1] || "") || /^\d/.test(item.literal)).filter((item, index, array) =>
         array.findIndex(other => Math.abs(other.price - item.price) < 0.001 && Math.abs(other.index - item.index) < 3) === index
       );
+    }
+
+    // 抽一行里的报价。与后端 tools.extract_price 保持同一套规则（词表/区间 5~60）。
+    // ⚠️ 旧实现直接取 numberFromPrice(line) —— 行内第一个数字，
+    //    于是「账期还想压到45天」会得到 45、「竞品低3个点」会得到 3。
+    function priceValueFromLine(line) {
+      const text = String(line || "");
+      const marked = text.match(/(\d{1,2}(?:\.\d{1,2})?)\s*(?:元\s*\/?\s*(?:kg|公斤|斤)?|元\/?公斤|元每公斤|元一公斤|块(?:钱)?|\/kg)/i);
+      if (marked) {
+        const v = Number(marked[1]);
+        if (Number.isFinite(v) && v >= 5 && v <= 60) return Number(v.toFixed(2));
+      }
+      const candidates = extractPriceCandidates(text);
+      if (candidates.length) {
+        return Number(candidates[0].price.toFixed(2));
+      }
+      const re = /(\d{1,2}(?:\.\d{1,2})?)/g;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        const end = m.index + m[0].length;
+        if (isNonPriceOccurrence(text, end)) continue;
+        if (/[个点折]\s*$/.test(text.slice(Math.max(0, m.index - 3), m.index))) continue;
+        const v = Number(m[1]);
+        if (Number.isFinite(v) && v >= 5 && v <= 60) return Number(v.toFixed(2));
+      }
+      return NaN;
     }
 
     function companyRules() {
@@ -3978,29 +4416,53 @@
 
     function findQuoteForProduct(product, quoteItems) {
       if (!quoteItems.length) return null;
-      const exact = quoteItems.find(item => item.product === product);
+      // 「待确认」是抽取失败的占位符，两侧任意一侧是它都不能算匹配到品项 ——
+      // 否则两个都没识别出品项的行会互相匹配上，报出一个凭空的价差。
+      const usable = quoteItems.filter(item => item.product && item.product !== UNKNOWN_PRODUCT);
+      if (!usable.length) return null;
+      if (!product || product === UNKNOWN_PRODUCT) {
+        return usable.length === 1 ? usable[0] : null;
+      }
+      const exact = usable.find(item => item.product === product);
       if (exact) return exact;
-      const fuzzy = quoteItems.find(item => product.includes(item.product) || item.product.includes(product));
+      const fuzzy = usable.find(item => product.includes(item.product) || item.product.includes(product));
       if (fuzzy) return fuzzy;
-      return quoteItems.length === 1 ? quoteItems[0] : null;
+      return usable.length === 1 ? usable[0] : null;
     }
 
     function parseManualCompetitorPrices(value) {
       return String(value || "").split(/\n+/).map(line => {
-        const priceCandidates = extractPriceCandidates(line);
-        const price = Number.isFinite(numberFromPrice(line, NaN)) ? numberFromPrice(line, NaN) : (priceCandidates[0] ? priceCandidates[0].price : NaN);
+        const price = priceValueFromLine(line);
         const rowProduct = inferProduct(line);
-        const priceLiteral = priceCandidates[0] ? priceCandidates[0].literal : "";
-        const company = line
-          .replace(/\d+\s*天(?:账期)?|账期|赊销|现款|现结|月结|款到发货|预付款|滚动结/g, "")
-          .replace(/\d+(\.\d+)?\s*(元\s*\/?\s*(kg|公斤)|元\/公斤|元每公斤|元|\/kg|kg)?/gi, "")
-          .replace(priceLiteral, "")
-          .replace(/[一二两三四五六七八九十]{1,3}(点[一二两三四五六七八九\d]|块(?:钱)?[一二两三四五六七八九]?|元[一二两三四五六七八九]?)/g, "")
-          .replace(/白条肉|白条|分割品|气调产品|五花肉|猪前腿|猪后腿|前后腿|猪蹄|排骨|里脊|冷鲜肉|冻品|鲜品/g, "")
-          .replace(/[：:=,，;；|-]/g, " ")
-          .trim();
-        return Number.isFinite(price) ? { company: company || "用户口头报价", product: rowProduct === "待确认" ? "" : rowProduct, price, terms: inferTermDays(line) } : null;
+        const priceLiteral = (extractPriceCandidates(line)[0] || {}).literal || "";
+        // 优先用已知竞品名录匹配（companyRules）；匹配不到才退到「首个子句清理」，
+        // 仍然不像名字就用统一占位符。
+        // ⚠️ 旧实现把整句当公司名（「河南客户张老板 餐饮连锁 嫌我们高 低个点 还想压到」）——
+        //    表现就是比价表「公司名」那一列出现一整句话。
+        const known = findCompanyInText(line);
+        const company = known || cleanCompanyFragment(line, priceLiteral) || "竞品（口头）";
+        return Number.isFinite(price) ? { company, product: rowProduct === UNKNOWN_PRODUCT ? "" : rowProduct, price, terms: inferTermDays(line) } : null;
       }).filter(Boolean);
+    }
+
+    // 从一行里裁出可能像公司名的那一小段。只取第一个子句，剔掉描述性词，
+    // 剩下仍超过 12 个字就判定「这不是名字」，返回空串 —— 不硬猜。
+    function cleanCompanyFragment(line, priceLiteral = "") {
+      const head = String(line || "").split(/[，,、:：!！?？]/)[0];
+      let s = head
+        .replace(/\d+\s*天(?:账期)?|账期|赊销|现款|现结|月结|款到发货|预付款|滚动结|竞品|报价|走|给/g, "")
+        .replace(/\d+(\.\d+)?\s*(元\s*\/?\s*(kg|公斤)|元\/公斤|元每公斤|元|\/kg|kg)?/gi, "")
+        .replace(priceLiteral, "")
+        .replace(/[一二两三四五六七八九十]{1,3}(点[一二两三四五六七八九\d]|块(?:钱)?[一二两三四五六七八九]?|元[一二两三四五六七八九]?)/g, "")
+        .replace(/白条肉|白条|分割品|气调产品|五花肉|猪前腿|猪后腿|前后腿|猪蹄|排骨|里脊|冷鲜肉|冻品|鲜品/g, "")
+        .replace(/嫌|说|想|要|还|再|能|可以|但是|不过|而且|我们|我方|我|他们|客户|老板|总|需求|觉得|认为|低于|高于|便宜|贵|压|降|涨|让|问|谈|聊|报|别家|他家|对方/g, "")
+        // 纯修饰/程度词：删完什么都不剩 -> 这段里根本没有公司名（如「竞品低3个点」->「低个点」-> 空）
+        .replace(/低|高|偏|更|个点|个|点|分|左右|上下|以上|以下|那边|这边|的话/g, "")
+        .replace(/[：:=,，;；|-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (s.length <= 1 || s.length > 12) return "";
+      return s;
     }
 
     function renderPriceBenchmark(productOrQuotes, companyPrice, manualText = "") {
@@ -4020,7 +4482,12 @@
         const compDays = (row.terms !== null && row.terms !== undefined) ? row.terms : defaultCompDays();
         const companyCap = quote ? capitalCost(quote.price, companyDays, rate) : 0;
         const compCap = capitalCost(price, compDays, rate);
-        const gapAdj = gap === null ? null : Number((gap - (compCap - companyCap)).toFixed(2));
+        // 综合价差 = 表面价差 －（我方资金成本 − 竞品资金成本）
+        // 客户视角：账期越长，对方实际越划算，所以要减掉资金成本之差。
+        // ⚠️ 旧实现写成 gap - (compCap - companyCap)，符号反了 ——
+        //    等于把资金成本差算了两遍（偏差恰好 2×(compCap−companyCap)）。
+        //    必须与后端 tools.compare_prices 的 gap_adj 保持同一公式。
+        const gapAdj = gap === null ? null : Number((gap - (companyCap - compCap)).toFixed(2));
         return {
           company: row.company,
           type: "资料竞品",
@@ -4052,6 +4519,343 @@
         hasCompanyPrice: quoteItems.length > 0,
         quoteItems
       };
+    }
+
+    // ===== 话术演练室（多轮对话陪练，基于成功案例库） =====
+    let coachSid = null;
+    let coachEndedFlag = false;
+    let coachBusyFlag = false;
+    let coachLastHint = "";
+    let coachClientName = "客户";
+    let coachOutcome = "";
+    let coachHarvested = false;
+    let coachMsgCount = 0;
+
+    function coachWhoLabel(who) {
+      return ({ client: "🎭 " + coachClientName, me: "🧑‍💼 你", coach: "🧑‍🏫 教练" })[who] || "";
+    }
+
+    function coachAppend(who, text) {
+      const chat = $("coachChat");
+      const wrap = document.createElement("div");
+      wrap.className = "msg " + who;
+      const label = coachWhoLabel(who);
+      wrap.innerHTML = (label ? `<span class="who">${label}</span>` : "") + safeText(text);
+      chat.appendChild(wrap);
+      chat.scrollTop = chat.scrollHeight;
+      if (who !== "sys") coachMsgCount += 1;
+    }
+
+    function coachShowCase(c) {
+      coachClientName = (c && c.customerName) || "客户";
+      const box = $("coachCaseCard");
+      if (!c) { box.innerHTML = ""; return; }
+      box.innerHTML = `<div class="coach-case"><b>🎯 陪练客户：${safeText(coachClientName)}</b>` +
+        `<div class="row"><span class="kv">${safeText(c.type || "类型待确认")}</span>` +
+        `<span class="kv">主营 ${safeText(c.product || "待确认")}</span>` +
+        `<span class="kv">关注 ${safeText(c.concern || "待确认")}</span>` +
+        `<span class="kv">打法 ${safeText(c.breakthrough || "待确认")}</span></div>` +
+        `<div style="color:var(--muted);margin-top:6px;font-size:12px">参考结果：${safeText(c.result || "待确认")}｜${safeText(c.purpose || "")}</div></div>`;
+    }
+
+    function coachMood(mood, goal) {
+      if (mood == null) return;
+      const goalV = goal || 72;
+      $("coachMoodBox").style.display = "block";
+      $("coachMoodText").textContent = `${mood} / ${goalV}`;
+      const pct = Math.max(0, Math.min(100, Math.round((mood / goalV) * 100)));
+      $("coachMoodBar").style.width = pct + "%";
+    }
+
+    function coachSetBusy(busy) {
+      coachBusyFlag = busy;
+      const canTalk = !!coachSid && !coachEndedFlag;
+      const canHarvest = !!coachSid && coachEndedFlag && coachOutcome === "win" && !coachHarvested;
+      const canSave = !!coachSid && coachMsgCount > 0 && !coachBusyFlag;
+      $("coachStartBtn").disabled = busy;
+      $("coachSendBtn").disabled = busy || !canTalk;
+      $("coachHintBtn").disabled = busy || !canTalk;
+      $("coachInput").disabled = busy || !canTalk;
+      if ($("coachHarvestBtn")) $("coachHarvestBtn").disabled = busy || !canHarvest;
+      if ($("coachSaveBtn")) $("coachSaveBtn").disabled = busy || !canSave;
+    }
+
+    function coachShowHint(note, hint) {
+      coachLastHint = hint || "";
+      let html = "<b>💬 教练点评</b><br/>" + safeText(note || "");
+      if (hint) {
+        html += `<br/><br/><b>📖 参考话术（来自成功案例）</b><br/>${safeText(hint)} ` +
+          `<button type="button" class="coach-copy" onclick="coachCopyHint()">复制</button>`;
+      }
+      $("coachHintText").innerHTML = html;
+      $("coachHintBox").style.display = "block";
+    }
+
+    function coachCopyHint() {
+      if (!coachLastHint) return;
+      const done = () => showToast("参考话术已复制");
+      const fallbackCopy = () => {
+        const ta = document.createElement("textarea");
+        ta.value = coachLastHint;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) { showToast("复制失败，请手动选择"); }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(coachLastHint).then(done).catch(fallbackCopy);
+      } else fallbackCopy();
+    }
+
+    async function coachStart(caseId) {
+      const text = $("coachScenario").value.trim();
+      if (!text && !caseId) { showToast("先描述要演练的客户/场景"); return; }
+      coachEndedFlag = false;
+      coachOutcome = "";
+      coachHarvested = false;
+      coachMsgCount = 0;
+      $("coachHarvestBox").style.display = "none";
+      coachSetBusy(true);
+      coachAppend("sys", caseId ? "🎯 已选定陪练对象，正在创建演练…" : "🔍 正在从成功案例库匹配最像的客户…");
+      try {
+        const resp = await fetch(agentApiBase() + "/api/coach/start", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, difficulty: $("coachDifficulty").value, case_id: caseId || "" })
+        });
+        const j = await resp.json();
+        if (!j.ok) { coachAppend("coach", j.message || "启动失败，请检查后端"); coachSetBusy(false); return; }
+        coachSid = j.session_id;
+        $("coachChat").innerHTML = "";
+        coachShowCase(j.case);
+        coachMood(j.mood, j.goal);
+        $("coachModeTag").textContent = j.mode === "deepseek" ? "DeepSeek 真实模型" : "规则模式";
+        $("coachStageTag").textContent = j.stage_label || "破冰开场";
+        $("coachRoundTag").textContent = "";
+        coachAppend("sys", `🎭 演练开始（难度：${j.difficulty}｜陪练原型打法：${(j.case && j.case.breakthrough) || "待确认"}）。对客户说的第一句话放这里 ↓`);
+        coachAppend("client", j.client_talk);
+        coachShowHint(j.coach_note, "");
+        coachSetBusy(false);
+        $("coachInput").focus();
+      } catch (e) {
+        coachAppend("coach", "连接后端失败：" + e.message + "（请确认后端已启动）");
+        coachSetBusy(false);
+      }
+    }
+
+    async function coachReplyCall(body) {
+      coachSetBusy(true);
+      try {
+        const resp = await fetch(agentApiBase() + "/api/coach/reply", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.assign({ session_id: coachSid }, body))
+        });
+        const j = await resp.json();
+        if (!j.ok) { coachAppend("coach", j.message || "出错，请重试"); coachSetBusy(false); return; }
+        coachMood(j.mood, j.goal);
+        $("coachStageTag").textContent = j.stage_label || "异议交锋";
+        $("coachRoundTag").textContent = j.rounds ? `第 ${j.rounds} 轮` : "";
+        if (j.client_talk) coachAppend("client", j.client_talk);
+        coachShowHint(j.coach_note, j.hint || "");
+        if (j.done) {
+          coachEndedFlag = true;
+          coachOutcome = j.outcome || "";
+          coachSetBusy(false);
+          coachAppend("sys", j.outcome === "win"
+            ? "🎉 恭喜，客户松口了！点下方「📥 谈成·沉淀为案例」把它写进记忆库，或「💾 保存本场记录」留存回放。"
+            : "😅 这场没谈成。回看参考话术和教练点评，调整策略后点「重新演练」再战。");
+        } else {
+          coachSetBusy(false);
+        }
+      } catch (e) {
+        coachAppend("coach", "连接后端失败：" + e.message);
+        coachSetBusy(false);
+      }
+    }
+
+    function coachSend() {
+      if (coachBusyFlag || !coachSid || coachEndedFlag) return;
+      const v = $("coachInput").value.trim();
+      if (!v) return;
+      $("coachInput").value = "";
+      coachAppend("me", v);
+      coachReplyCall({ user_talk: v });
+    }
+
+    function coachAskHint() {
+      if (coachBusyFlag || !coachSid || coachEndedFlag) return;
+      coachAppend("sys", "🧑‍🏫 你请求了提示…");
+      coachReplyCall({ user_talk: "", want_hint: true });
+    }
+
+    function coachReset() {
+      coachSid = null;
+      coachEndedFlag = false;
+      coachLastHint = "";
+      coachOutcome = "";
+      coachHarvested = false;
+      coachMsgCount = 0;
+      $("coachChat").innerHTML = "<div class=\"msg sys\">👋 选好场景和难度，点「开始演练」，AI 客户会先开口。</div>";
+      $("coachHintBox").style.display = "none";
+      $("coachMoodBox").style.display = "none";
+      $("coachHarvestBox").style.display = "none";
+      $("coachStageTag").textContent = "未开始";
+      $("coachRoundTag").textContent = "";
+      $("coachInput").value = "";
+      $("coachCaseCard").innerHTML = "";
+      coachSetBusy(false);
+    }
+
+    // ===== 话术演练室 · 沉淀与记录（增强） =====
+    const COACH_HISTORY_KEY = "coach_history_v1";
+
+    function coachLoadHistory() {
+      try { return JSON.parse(localStorage.getItem(COACH_HISTORY_KEY) || "[]"); } catch { return []; }
+    }
+    function coachSaveHistory(list) {
+      localStorage.setItem(COACH_HISTORY_KEY, JSON.stringify(list.slice(0, 20)));
+    }
+    function coachRenderHistory() {
+      const list = coachLoadHistory();
+      const box = $("coachHistoryList");
+      if (!box) return;
+      if (!list.length) {
+        box.innerHTML = "<div class=\"coach-setup-note\" style=\"margin:0\">暂无记录。每场演练可点「💾 保存本场记录」留存回放。</div>";
+        return;
+      }
+      box.innerHTML = list.map((r, i) => {
+        const when = new Date(r.t).toLocaleString("zh-CN", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+        const tag = r.outcome === "win" ? "<span class=\"tag green\">成交</span>" : r.outcome === "lose" ? "<span class=\"tag red\">未成</span>" : "<span class=\"tag gold\">" + safeText(r.outcome || "进行中") + "</span>";
+        return `<div class="coach-hist-item"><div class="h-main"><b>${safeText(r.label || "演练")} ${tag}</b><span class="h-sub">${when} · ${(r.msgs || []).length} 条消息 · 难度${safeText(r.difficulty || "实战")}</span></div><button class="secondary hist-replay" type="button" data-i="${i}">回放</button><button class="secondary hist-del" type="button" data-i="${i}">删</button></div>`;
+      }).join("");
+    }
+    function coachHistoryClick(e) {
+      const replay = e.target.closest(".hist-replay");
+      const del = e.target.closest(".hist-del");
+      if (replay) {
+        const list = coachLoadHistory();
+        const rec = list[+replay.dataset.i];
+        if (rec) coachReplayRecord(rec);
+        return;
+      }
+      if (del) {
+        const list = coachLoadHistory();
+        list.splice(+del.dataset.i, 1);
+        coachSaveHistory(list);
+        coachRenderHistory();
+      }
+    }
+    function coachSaveRecord() {
+      if (!coachSid || !coachMsgCount) { showToast("还没有对话内容可保存"); return; }
+      const msgs = [];
+      $("coachChat").querySelectorAll(".msg").forEach(m => {
+        const who = m.classList.contains("client") ? "client" : m.classList.contains("me") ? "me" : null;
+        if (!who) return;
+        const t = (m.innerText || "").replace(/^[^\n]*\n/, "").trim();
+        if (t) msgs.push({ who, text: t });
+      });
+      if (!msgs.length) { showToast("还没有对话内容可保存"); return; }
+      const rec = {
+        t: Date.now(),
+        label: coachClientName || "演练",
+        difficulty: $("coachDifficulty").value,
+        rounds: coachMsgCount,
+        outcome: coachOutcome || (coachEndedFlag ? "中断" : "进行中"),
+        msgs
+      };
+      coachSaveHistory([rec].concat(coachLoadHistory()));
+      coachRenderHistory();
+      showToast("本场记录已保存到左侧「演练记录」");
+    }
+    function coachReplayRecord(rec) {
+      if (coachSid && !coachEndedFlag) { showToast("当前演练还在进行，先「重新演练」或结束本场再回放"); return; }
+      $("coachChat").innerHTML = "";
+      coachAppend("sys", `📼 回放 · ${rec.label || "演练"}（难度 ${rec.difficulty || "实战"}｜${rec.outcome || ""}｜${new Date(rec.t).toLocaleString() || ""}）`);
+      (rec.msgs || []).forEach(m => {
+        if (m.who === "client") coachAppend("client", m.text);
+        else if (m.who === "me") coachAppend("me", m.text);
+        else coachAppend("sys", m.text);
+      });
+      coachAppend("sys", "—— 回放结束。想自己练一场，点「开始演练」或「重新演练」。");
+      $("coachHintBox").style.display = "none";
+      $("coachMoodBox").style.display = "none";
+      $("coachHarvestBox").style.display = "none";
+    }
+    async function coachHarvestOpen() {
+      if (!coachSid || coachOutcome !== "win" || coachHarvested) return;
+      coachSetBusy(true);
+      try {
+        const resp = await fetch(agentApiBase() + "/api/coach/harvest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session_id: coachSid })
+        });
+        const j = await resp.json();
+        if (!j.ok) { showToast(j.message || "沉淀失败，请重试"); coachSetBusy(false); return; }
+        const d = j.draft || {};
+        $("hvCustomerName").value = d.customerName || "";
+        $("hvType").value = d.type || "";
+        $("hvProduct").value = d.product || "";
+        $("hvConcern").value = d.concern || "";
+        $("hvBreakthrough").value = d.breakthrough || "";
+        $("hvProcess").textContent = (d.process || "").slice(0, 2000);
+        $("coachHarvestBox").style.display = "block";
+        $("coachHarvestBox").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } catch (e) {
+        showToast("连接后端失败：" + e.message);
+      }
+      coachSetBusy(false);
+    }
+    function coachHarvestSubmit() {
+      if (coachHarvested) return;
+      const payload = {
+        customerName: $("hvCustomerName").value.trim() || "演练客户",
+        type: $("hvType").value.trim() || "待确认",
+        product: $("hvProduct").value.trim() || "待确认",
+        concern: $("hvConcern").value.trim() || "待确认",
+        breakthrough: $("hvBreakthrough").value.trim() || "小批量试单验证",
+        result: "演练成交（客户松口，待实地验证）",
+        purpose: "话术演练",
+        process: $("hvProcess").textContent || "",
+        source: "话术演练沉淀"
+      };
+      coachSetBusy(true);
+      try {
+        addSuccessCase(payload);
+        coachHarvested = true;
+        $("coachHarvestBox").style.display = "none";
+        renderMemoryLibrary();
+        coachSetBusy(false);
+        showToast("✅ 已沉淀为成功案例，可在「成功记忆库」查看");
+      } catch (e) {
+        coachSetBusy(false);
+        showToast("沉淀失败：" + e.message);
+      }
+    }
+    function coachHarvestCancel() {
+      $("coachHarvestBox").style.display = "none";
+    }
+    function coachFromSummary() {
+      const t = ($("transcript") ? $("transcript").value : "").trim();
+      const name = ($("customerName") ? $("customerName").value : "").trim();
+      if (!t) { showToast("先在拜访助手导入/填写拜访资料，再演练该客户"); navigateTo("summary"); return; }
+      $("coachScenario").value = (name ? name + "，" : "") + t.slice(0, 2000);
+      navigateTo("coach");
+      showToast("拜访资料已带入，点「开始演练」即可对练");
+    }
+    async function coachStartWithCase(caseId) {
+      if (!$("coachScenario").value.trim()) {
+        try {
+          const resp = await fetch(agentApiBase() + "/api/cases", { signal: AbortSignal.timeout(2500) });
+          const json = await resp.json();
+          const c = (json.cases || []).find(x => x.id === caseId);
+          if (c) {
+            $("coachScenario").value = `${c.customerName || ""}，${c.type || ""}，主营${c.product || ""}，关注${c.concern || ""}，参考打法：${c.breakthrough || ""}`;
+          }
+        } catch {}
+      }
+      coachStart(caseId);
     }
 
     function showToast(text) {
@@ -4096,6 +4900,13 @@
       $("currentUser").textContent = account || "demo-manager";
       $("currentRole").textContent = $("loginRole").value;
       navigateTo("home");
+      // P0 真实数据引导：台账拉取 + 拜访记录服务端同步 + 首页指标动态化
+      refreshCustomerPool();
+      refreshStats();
+      syncServerVisits().then(() => {
+        refreshStats();
+        renderVisitHistory();
+      });
       showToast(mode === "演示" ? "已进入演示模式" : "登录成功");
     }
 
@@ -4486,6 +5297,7 @@
         return !(sameFile || sameRecord);
       });
       saveVisitHistory([snapshot, ...records]);
+      syncVisitRecordToServer(snapshot);
       renderVisitHistory();
     }
 
@@ -4552,12 +5364,14 @@
 
     function deleteVisitHistoryRecord(id) {
       saveVisitHistory(loadVisitHistory().filter(record => record.id !== id));
+      deleteVisitOnServer(id);
       renderVisitHistory();
       showToast("历史记录已删除");
     }
 
     function clearVisitHistory() {
       localStorage.removeItem(VISIT_HISTORY_KEY);
+      fetch(agentApiBase() + "/api/visits", { method: "DELETE" }).catch(() => {});
       renderVisitHistory();
       showToast("历史记录已清空");
     }
@@ -4702,7 +5516,8 @@
       if (payTalk) talkText = `${talkText} ${payTalk}`;
       const creditBlock = block("账期情报与信用风险", "shield-check", `<div class="mini-grid">
         <div class="mini-card"><span>${icon("wallet")}付款方式</span><strong>${safeText(payment.payMethod)}</strong></div>
-        <div class="mini-card"><span>${icon("calendar-clock")}账期天数</span><strong>${safeText(payment.termDays || "待确认")}</strong></div>
+        <div class="mini-card"><span>${icon("calendar-clock")}账期天数</span><strong>${safeText(payment.risk && payment.risk.termDays != null ? payment.risk.termDays : (payment.termDays || "待确认"))}</strong></div>
+        <div class="mini-card"><span>${icon("history")}逾期天数</span><strong>${safeText(payment.risk && payment.risk.overdueDays != null ? payment.risk.overdueDays : "无")}</strong></div>
         <div class="mini-card"><span>${icon("banknote")}授信额度</span><strong>${safeText(payment.creditLimit)}</strong></div>
         <div class="mini-card"><span>${icon("shield-alert")}拖欠风险</span><strong>${creditRiskTag(payment.risk)}</strong></div>
       </div><div style="height:10px"></div><div class="table-wrap"><table><thead><tr><th>触发因子</th><th>建议动作</th></tr></thead><tbody>${payment.risk.factors.length ? payment.risk.factors.map(factor => `<tr><td>${safeText(factor)}</td><td>${payment.risk.action.map(safeText).join("；")}</td></tr>`).join("") : `<tr><td colspan="2">未检测到明显拖欠信号，按正常账期执行并保持对账记录。</td></tr>`}</tbody></table></div>`);
@@ -4719,6 +5534,7 @@
         overviewBlock +
         demandBlock +
         creditBlock +
+        renderAuditBlock(customerName, payment.risk) +
         similarBlock +
         block("AI分析报告", "chart-spline", `<div class="table-wrap"><table><thead><tr><th>分析项</th><th>识别结果</th><th>建议动作</th></tr></thead><tbody>
           <tr><td>拜访目的</td><td>${purpose}</td><td>${config.focus}</td></tr>
@@ -5387,12 +6203,23 @@
     if ($("memorySearchBtn")) $("memorySearchBtn").addEventListener("click", () => renderMemoryLibrary($("memorySearch").value.trim()));
     if ($("memorySearch")) $("memorySearch").addEventListener("keydown", (event) => { if (event.key === "Enter") renderMemoryLibrary($("memorySearch").value.trim()); });
     $("memoryOutput").addEventListener("click", (event) => {
+      const practiceBtn = event.target.closest("button.memory-practice");
+      if (practiceBtn) {
+        navigateTo("coach");
+        coachStartWithCase(practiceBtn.dataset.caseId);
+        return;
+      }
       const btn = event.target.closest("button.memory-delete");
       if (!btn) return;
       saveSuccessCases(loadSuccessCases().filter(c => c.id !== btn.dataset.caseId));
       fetch(agentApiBase() + "/api/cases/" + encodeURIComponent(btn.dataset.caseId), { method: "DELETE" }).catch(() => {});
       renderMemoryLibrary($("memorySearch") ? $("memorySearch").value.trim() : "");
       showToast("成功案例已删除");
+    });
+    document.addEventListener("click", (event) => {
+      const btn = event.target.closest("button[data-audit]");
+      if (!btn) return;
+      submitAuditDecision(btn.dataset.audit);
     });
     renderMemoryLibrary();
     if ($("agentApiBase")) $("agentApiBase").value = agentApiBase();
@@ -5414,6 +6241,32 @@
       applyTheme(btn.dataset.themeName);
       $("themeSwitcher").classList.remove("open");
     }));
+    // 话术演练室事件
+    $("coachStartBtn").addEventListener("click", () => coachStart());
+    $("coachSendBtn").addEventListener("click", coachSend);
+    $("coachHintBtn").addEventListener("click", coachAskHint);
+    $("coachResetBtn").addEventListener("click", coachReset);
+    $("coachInput").addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        coachSend();
+      }
+    });
+    $("coachHarvestBtn").addEventListener("click", coachHarvestOpen);
+    $("coachHarvestSubmit").addEventListener("click", coachHarvestSubmit);
+    $("coachHarvestCancel").addEventListener("click", coachHarvestCancel);
+    $("coachSaveBtn").addEventListener("click", coachSaveRecord);
+    $("coachHistoryClear").addEventListener("click", () => { coachSaveHistory([]); coachRenderHistory(); });
+    $("coachHistoryList").addEventListener("click", coachHistoryClick);
+    if ($("summaryPracticeBtn")) $("summaryPracticeBtn").addEventListener("click", coachFromSummary);
+    coachRenderHistory();
+    coachSetBusy(false);
+    // 客户台账事件
+    if ($("ledgerTemplateBtn")) $("ledgerTemplateBtn").addEventListener("click", ledgerTemplateDownload);
+    if ($("ledgerPickBtn")) $("ledgerPickBtn").addEventListener("click", () => $("ledgerFileInput").click());
+    if ($("ledgerFileInput")) $("ledgerFileInput").addEventListener("change", ledgerOnFile);
+    if ($("ledgerImportBtn")) $("ledgerImportBtn").addEventListener("click", ledgerImport);
+    if ($("ledgerClearBtn")) $("ledgerClearBtn").addEventListener("click", ledgerClear);
     navigateTo("home");
     renderIcons();
   </script>

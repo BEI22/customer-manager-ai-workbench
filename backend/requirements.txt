@@ -6,3 +6,5 @@ python-dotenv>=1.0
 langgraph>=1.0
 langchain>=1.0
 langchain-openai>=1.0
+openpyxl>=3.1
+python-multipart>=0.0.9

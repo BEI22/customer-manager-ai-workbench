@@ -1,6 +1,6 @@
 # 客户经理 AI 作战台（Customer Manager AI Workbench）
 
-面向生鲜行业客户经理的 **AI 智能体 + RAG 应用**：把客户拜访录音/文本自动转化为 **结构化拜访总结、账期风险风控、竞品比价、相似客户推荐与销售话术**。
+面向生鲜行业客户经理的 **AI 智能体 + RAG 应用**：把客户拜访文本（口述纪要 / Word / txt）自动转化为 **结构化拜访总结、账期风险风控、竞品比价、相似客户推荐与销售话术**。
 
 - 后端：**FastAPI + LangGraph + DeepSeek**，function calling 驱动的 Agent，SSE 流式输出思考过程
 - 前端：完整业务系统（拜访助手 / 找客户+地图 / 成功记忆 RAG / 数据看板 / 我的资料）+ Agent 技术演示页
@@ -12,12 +12,15 @@
 
 | 模块 | 说明 |
 | --- | --- |
-| 🗂 拜访助手 | 导入录音/Word/文本 → AI 总结、客户画像、账期风控、竞品比价、待办、话术（真实 Agent 流式） |
+| 🗂 拜访助手 | 导入文本 / Word / txt → AI 总结、客户画像、账期风控、竞品比价、待办、话术（真实 Agent 流式）。音频入口为**原型占位**（当前生成可编辑模板转写稿，ASR 见 Roadmap） |
 | 🛡 账期风控 | 付款方式/账期/欠款/逾期识别，风险评分四级（低/中/高/极高），催收待办 |
 | ⚖ 竞品比价 | 解析竞品公司/品项/价格/账期，计算**含账期资金成本的综合价差** |
 | 🎯 成功记忆（RAG） | 成功案例自动沉淀 → 特征向量检索（接口预留 pgvector）→ 相似客户 + 话术 |
+| 🎭 话术演练（多轮） | 检索最相似成功案例 → AI 扮演客户与你多轮过招，每轮教练点评 + 参考话术，卡壳可要提示；谈成可一键沉淀为新成功案例（闭环），本机演练记录可回放（LLM/规则双模式） |
 | 🗺 找客户 + 地图 | 高德地图（Leaflet）区域拓客、滞销品承接客户紫色标注 |
 | 📊 数据看板 | 角色自适应：客户经理"个人复盘"，区域/大区经理"管理驾驶舱"（区域风险排名） |
+| 📥 客户台账导入 | Excel/CSV 上传 → 首页指标/地图热力/机会推荐切真实数据（未导入自动保持演示） |
+| 🗄 拜访记录云端 | 拜访历史双写本地 + 后端，登录自动同步，换机不丢 |
 | 📢 推送 | 钉钉/飞书 Webhook，**服务端 `/api/push` 转发**（绕过浏览器 CORS），高优待办自动推送 |
 | 🎨 主题 | 5 套可切换风格（草原绿 / 深色驾驶舱 / 商务蓝 / 暖金晨曦 / 极简黑白） |
 
@@ -76,7 +79,15 @@ python -m uvicorn app.main:app --port 8000
 | 接口 | 方法 | 说明 |
 | --- | --- | --- |
 | `/api/health` | GET | 健康检查，返回 `llm_mode: deepseek/rule` |
+| `/api/customers` | GET/DELETE | 客户台账列表 / 清空（回演示模式） |
+| `/api/customers/import` | POST | Excel/CSV 导入台账（multipart；mode=replace/append） |
+| `/api/visits` | GET/DELETE | 拜访记录服务端存取（换机不丢） |
+| `/api/visits/merge` | POST | 前端本地记录批量合并到服务端（按 id 幂等） |
+| `/api/stats` | GET | 首页动态指标：客户数/拜访数/区域分布/品类 |
 | `/api/agent/run` | POST | 运行 Agent，SSE 流式（thinking/tool_start/tool_end/result） |
+| `/api/coach/start` | POST | 话术演练：按描述/画像匹配最相似成功案例，创建陪练会话，返回开场白 |
+| `/api/coach/reply` | POST | 话术演练：提交客户经理台词 → 客户回应 + 教练点评 + 参考话术（want_hint 可要提示） |
+| `/api/coach/harvest` | POST | 话术演练：把已成交会话生成成功案例草稿（确认后由 /api/cases 入库） |
 | `/api/cases` | GET/POST | 成功案例库增查 |
 | `/api/cases/{id}` | DELETE | 删除案例 |
 | `/api/push` | POST | 服务端转发消息到钉钉/飞书 |
@@ -104,11 +115,13 @@ python -m uvicorn app.main:app --port 8000
 
 ## Roadmap
 
+- [x] Excel 导入真实客户台账，地图与首页指标真实化（演示数据可一键清空）
+- [x] 拜访记录上移后端（JSON 存储），登录自动同步
 - [ ] 存储升级：JSON → PostgreSQL + pgvector，真向量检索（embedding API）
-- [ ] Excel 导入真实客户台账 / 订单数据，地图与账龄真实化
 - [ ] 登录认证 + RBAC（客户经理 / 区域经理 / 大区经理 / 项目部负责人）
 - [ ] 评估（evals）：总结质量、检索召回、话术评分
 - [ ] Docker 化 + GitHub Actions CI/CD
+- [ ] 演练记录保存：演练过程沉淀为新成功案例，支持回放复盘
 - [ ] 语音转写（ASR）、移动端适配
 
 ## License

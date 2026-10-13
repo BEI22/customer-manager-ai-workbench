@@ -17,6 +17,15 @@ Thumbs.db
 # 数据与密钥（不提交）
 *.log
 
+# 运行时数据（不提交）
+#   visits/audits/customers 是每个使用者跑出来的运行态数据，会含测试记录；
+#   三个加载器对「文件不存在」都已兜底（返回空列表），所以不入库不影响启动。
+#   data/success_cases.json 例外：它是预置的演示案例库，保留在仓库里，
+#   这样克隆下来「成功记忆库 / 相似案例检索」开箱就有内容。
+backend/data/visits.json
+backend/data/audits.jsonl
+backend/data/customers.json
+
 # 大型交付物
 *.zip
 *.mp4
