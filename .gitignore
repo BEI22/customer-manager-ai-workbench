@@ -26,6 +26,12 @@ backend/data/visits.json
 backend/data/audits.jsonl
 backend/data/customers.json
 
+# 本机临时资料（严禁提交）
+#   .hermes/ 是 Hermes 桌面端在该项目下产生的附件目录，会落录屏、面试话术、
+#   JD、简历 PDF 等个人文件。这是公开仓库 —— 不忽略的话一次 git add -A
+#   就会把它们推上去。不锚定到根，连子目录里的也一起挡掉。
+.hermes/
+
 # 大型交付物
 *.zip
 *.mp4
